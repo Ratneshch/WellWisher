@@ -50,7 +50,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="w-full h-[480px] md:h-[500px] relative overflow-hidden mb-10">
+    <div className="w-full h-[480px] md:h-[600px] relative overflow-hidden mb-10">
       {/* Background Image */}
       <img
         src={currentCar.image}
