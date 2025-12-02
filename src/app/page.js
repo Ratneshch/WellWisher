@@ -1,5 +1,6 @@
 import InfoSection from "@/components/InfoSection";
 import NewLaunch from "@/components/NewLaunch";
+import TataCars from "@/components/TataCars";
 import Image from "next/image";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <div className="w-full max-w-6xl">
         <InfoSection />
         <NewLaunch />
+        <TataCars />
       </div>
     </main>
   );

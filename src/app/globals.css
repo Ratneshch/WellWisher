@@ -136,3 +136,6 @@ video::-webkit-media-controls-panel {
 @media (max-width: 420px) {
   .text-6xl { word-break: keep-all; white-space: normal; }
 }
+
+/* End of Video section from NewLaunch component */
+
