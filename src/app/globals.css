@@ -24,3 +24,115 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
+/*Video section from NewLaunch component*/
+
+/* Hide fullscreen button */
+video::-webkit-media-controls-fullscreen-button {
+  display: none !important;
+}
+
+/* Hide 3-dot settings menu */
+video::-webkit-media-controls-enclosure {
+  overflow: hidden !important;
+}
+
+video::-webkit-media-controls-panel {
+  overflow: hidden !important;
+}
+
+/* Small phones (max-width: 640px) */
+@media (max-width: 640px) {
+  /* Reduce huge heading (text-6xl -> mobile-friendly) */
+  .text-6xl {
+    font-size: 2rem !important;     /* 32px */
+    line-height: 1.05 !important;
+    letter-spacing: 0.5px;
+  }
+
+  /* Ensure the two columns stack and get comfortable side padding */
+  .lg\:col-span-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Limit video height so it doesn't overwhelm the screen */
+  video {
+    max-height: 360px;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  /* Make custom mute button easier to tap on mobile */
+  .absolute.bottom-4.right-4 {
+    bottom: 0.9rem !important;
+    right: 0.9rem !important;
+    padding: 0.7rem !important;
+    min-width: 44px;
+    min-height: 44px;
+  }
+
+  /* Slightly smaller subheading and paragraph for mobile */
+  .text-2xl { font-size: 1.125rem !important; } /* 18px */
+  .mt-4 { margin-top: 1rem !important; }
+
+  /* Make CTA full-width and centered on tiny screens */
+  .mt-8 .inline-flex {
+    width: 100% !important;
+    justify-content: center !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Medium devices / tablets (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .text-6xl {
+    font-size: 3.25rem !important; /* ~52px */
+    line-height: 1.04 !important;
+  }
+
+  video {
+    max-height: 520px;
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+  }
+
+  .absolute.bottom-4.right-4 {
+    bottom: 1rem !important;
+    right: 1rem !important;
+    padding: 0.8rem !important;
+  }
+
+  .mt-8 .inline-flex {
+    padding-left: 1.25rem !important;
+    padding-right: 1.25rem !important;
+  }
+
+  /* Improve readability of the bullet list on medium screens */
+  .space-y-3 > li { gap: 0.75rem; }
+}
+
+/* Improve touch target and contrast for the mute button across devices */
+.absolute.bottom-4.right-4 {
+  /* a gentle shadow and slightly larger hit area */
+  box-shadow: 0 6px 18px rgba(2,4,23,0.12);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .12s ease, background-color .12s ease;
+}
+.absolute.bottom-4.right-4:active { transform: scale(.98); }
+
+/* Optional: ensure the video container keeps rounded corners on small devices */
+.relative.rounded-2xl.overflow-hidden {
+  border-radius: 1rem; /* matches rounded-2xl visually on all screens */
+}
+
+/* Optional: subtle responsive text wrap improvements for long title line */
+@media (max-width: 420px) {
+  .text-6xl { word-break: keep-all; white-space: normal; }
+}

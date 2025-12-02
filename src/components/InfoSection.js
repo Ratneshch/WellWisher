@@ -39,7 +39,7 @@ export default function InfoSection() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left column: heading */}
         <div className="lg:col-span-5">
-          <h2 className="text-2xl sm:text-3xl font-semibold text-slate-900 pt-20 pl-14">
+          <h2 className="text-2xl sm:text-2xl  font-semibold text-slate-900 text-center md:mt-18 ">
             We're <span className="text-yellow-600">BIG</span> On What
             <br /> Matters To You
           </h2>
