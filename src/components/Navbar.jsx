@@ -1,13 +1,14 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "New Cars", path: "/" },
-    { name: "About Us", path: "/" },
-    { name: "Contact Us", path: "/" },
+    { name: "New Cars", path: "/newcars" },
+    { name: "About Us", path: "/about" },
+    { name: "Contact Us", path: "/contact" },
   ];
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
@@ -38,7 +39,7 @@ const Navbar = () => {
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-12">
         {navLinks.map((link, i) => (
-          <a
+          <Link
             key={i}
             href={link.path}
             className={`font-medium transition-all duration-300 ${
@@ -46,7 +47,7 @@ const Navbar = () => {
             }`}
           >
             {link.name}
-          </a>
+          </Link>
         ))}
       </div>
 
