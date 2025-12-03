@@ -10,7 +10,7 @@ import { GiGearStick } from "react-icons/gi";
 
 export default function NewCarsPage() {
   return (
-    <div className="min-h-screen bg-gray-50 p-5 mt-20">
+    <div className="min-h-screen bg-gray-50 text-black p-5 mt-20">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">New Cars</h1>
 
