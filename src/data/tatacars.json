@@ -8,6 +8,7 @@
     "image": "https://s7ap1.scene7.com/is/image/tatamotors/sierra-horses-desktop?$BA-1920-925-D$&fit=fit&fmt=avif-alpha",
     "imageCard":"/sierra2.png",
     "color": "#F59E0B",
+    "accentBg": "bg-yellow-500",
     "exShowroom": "11.49 Lakh (Expected)",
     "onRoad_Mumbai": "13.80 – 14.30 Lakh (Estimated)",
     "specifications": {
@@ -45,6 +46,7 @@
     "image": "https://s7ap1.scene7.com/is/image/tatamotors/safari-book-test-drive?$B-1228-488-D$&fit=crop&fmt=avif-alpha",
      "imageCard":"/safari.png",
     "color": "#beb29b",
+     "accentBg": "bg-amber-700",
     "exShowroom": "14.66 Lakh",
     "onRoad_Mumbai": "17.20 – 18.10 Lakh",
     "specifications": {
@@ -82,6 +84,7 @@
     "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/197759/harrier-exterior-left-front-three-quarter.avif?isig=0",
     "imageCard":"/harrier.png",
     "color": "#e8e25e",
+     "accentBg": "bg-gray-700",
     "exShowroom": "14.99 Lakh",
     "onRoad_Mumbai": "17.60 – 18.30 Lakh",
     "specifications": {
@@ -262,6 +265,8 @@
     "description": "A compact SUV known for strong safety ratings and efficient engines.",
     "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/197761/nexon-exterior-front-three-quarter.avif",
     "color": "#f97316",
+    "imageCard":"/Nexon.png",
+     "accentBg": "bg-red-700",
     "exShowroom": "7.32 Lakh",
     "onRoad_Mumbai": "8.60 – 9.10 Lakh",
     "specifications": {
@@ -298,6 +303,8 @@
     "description": "A futuristic SUV-coupé blending design, performance, and advanced technology.",
     "image": "https://cars.tatamotors.com/images/curvv/curvv-concept.jpg",
     "color": "#ff4f81",
+      "imageCard":"/Curvv1.png",
+     "accentBg": "bg-amber-900",
     "exShowroom": "10.50 – 11.50 Lakh (Expected)",
     "onRoad_Mumbai": "12.80 – 13.90 Lakh (Estimated)",
     "specifications": {

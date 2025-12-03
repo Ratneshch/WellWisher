@@ -6,7 +6,7 @@ import Image from "next/image";
 import carsJson from "../data/tatacars.json";
 
 // requested list (order matters)
-const SHOW_ONLY = ["Sierra", "Harrier", "Curvv", "Nexon", "New Safari"];
+const SHOW_ONLY = ["Sierra","New Safari", "Harrier", "Nexon", "Curvv" ];
 
 // helper: normalize a name string for comparison
 const normalizeName = (s = "") =>
@@ -85,7 +85,7 @@ export default function CarShowcase() {
     return (
       <section className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
         <h1 className="text-center mb-8 font-extrabold tracking-wide text-3xl uppercase text-black">
-          Tata Cars
+         Featured Tata Cars
         </h1>
         <p className="text-center text-gray-600">No cars found in JSON</p>
       </section>
@@ -96,7 +96,7 @@ export default function CarShowcase() {
     <section className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
       {/* Title */}
       <h1 className="text-center mb-8 sm:mb-10 font-extrabold tracking-wide text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase text-black">
-        Tata Cars
+       Featured Tata Cars
       </h1>
 
       {/* Tabs */}
