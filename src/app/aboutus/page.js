@@ -37,7 +37,7 @@ export default function AboutUsPage() {
         </div>
 
         <div className="text-sm text-gray-700 space-y-4">
-          <h1 className="text-2xl font-bold text-gray-900">About WellWisher Group</h1>
+          <h1 className="text-2xl font-bold  text-yellow-600">About WellWisher Group</h1>
           <p>
             WellWisher Group has proudly stood tall as a leader in Mumbai, Navi
             Mumbai, and Pune’s real estate development sector for over 15 years.
@@ -59,71 +59,73 @@ export default function AboutUsPage() {
       </section>
 
       {/* LEADERSHIP */}
-      <section className="bg-gray-50 py-12">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-indigo-900 tracking-wide mb-10">
-            LEADERSHIP
-          </h2>
+   <section className="bg-black py-16">
+  <div className="max-w-6xl mx-auto px-4">
+    <h2 className="text-4xl md:text-5xl font-extrabold text-center text-yellow-500 tracking-wider mb-14">
+      LEADERSHIP
+    </h2>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            {/* Photo */}
-            <div className="bg-white p-6 rounded shadow">
-              <div className="w-full relative aspect-[4/5] rounded overflow-hidden">
-                <Image
-                  src="/Abhijeet_Bansal.png"
-                  alt="Abhijeet C Bhansali"
-                  fill
-                  style={{ objectFit: "cover" }}
-                />
-              </div>
-            </div>
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+      {/* Left Card – Photo */}
+      <div className="bg-white border border-white/10 shadow-2xl p-6 rounded-2xl">
+        <div className="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
+          <Image
+            src="/Abhijeet_Bansal.png"
+            alt="Abhijeet C Bhansali"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </div>
 
-            {/* Bio */}
-            <div className="lg:col-span-2 bg-white p-6 rounded shadow space-y-4">
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900">Abhijeet C Bhansali</h3>
-                <p className="text-sm text-gray-500 mt-1">
-                  Managing Director, WellWisher Group
-                </p>
-              </div>
+      {/* Right Card – Bio */}
+      <div className="lg:col-span-2 bg-[#111] border border-white/10 shadow-2xl p-8 rounded-2xl text-white space-y-5">
+        <div>
+          <h3 className="text-3xl font-bold text-white">
+            Abhijeet C Bhansali
+          </h3>
+          <p className="text-sm text-gray-400 mt-1">
+            Managing Director, WellWisher Group
+          </p>
+        </div>
 
-              <div className="text-gray-700 text-sm space-y-3">
-                <p>
-                  We at WellWisher Group believe that great team leaders are those who
-                  empower others! Each project undertaken by the WellWisher Group
-                  is strongly backed by outstanding leadership that provides valuable
-                  insight and assistance in taking the business further and paving
-                  the way forward.
-                </p>
-                <p>
-                  Abhijeet Chandrakant Bhansali, MD, WellWisher Group, promises to
-                  bring in a better tomorrow by providing people improved quality
-                  of life and living standards. With customers at the core of all
-                  endeavors, every project under the WellWisher brand is
-                  conceptualized keeping in mind the aspirations of the buyer.
-                </p>
-              </div>
+        <div className="text-gray-300 text-[15px] leading-relaxed space-y-4">
+          <p>
+            We at WellWisher Group believe that great leaders empower others.
+            Every project undertaken by the group is strongly backed by
+            outstanding leadership, providing invaluable insight and vision
+            that drives the company forward toward greater heights.
+          </p>
+          <p>
+            Abhijeet Chandrakant Bhansali, MD of WellWisher Group, strives to
+            build a better tomorrow by enhancing lifestyle standards and
+            delivering unmatched quality. With customers at the heart of every
+            endeavor, each project is conceptualized keeping in mind the
+            aspirations, comfort, and satisfaction of the buyer.
+          </p>
+        </div>
 
-              {/* signature */}
-              <div className="mt-4">
-                <div className="w-44 h-20 relative">
-                  <Image
-                    src="/signature.jpg"
-                    alt="signature"
-                    fill
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-              </div>
-            </div>
+        {/* Signature */}
+        <div className="pt-4">
+          <div className="w-48 h-20 relative opacity-90">
+            <Image
+              src="/signature.jpg"
+              alt="signature"
+              fill
+              className="object-contain"
+            />
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       {/* SHOWROOM */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-indigo-900 tracking-wide mb-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center  text-yellow-600 tracking-wide mb-8">
             SHOWROOM
           </h2>
 
