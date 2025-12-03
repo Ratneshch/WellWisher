@@ -54,7 +54,7 @@ export default function Navbar() {
       <div className="flex items-center gap-3 md:hidden">
         <svg
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`h-6 w-6 cursor-pointer transition-all ${isScrolled ? "invert" : ""}`}
+          className={`h-6 w-6 cursor-pointer transition-all ${isScrolled ? "text-black" : "text-white"}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2"

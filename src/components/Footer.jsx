@@ -44,7 +44,7 @@ const Footer = () => {
 
       {/* Footer Bottom */}
       <p className="pt-5 text-center text-xs sm:text-sm pb-5">
-        Copyright 2025 © <a className="text-gray-800 font-medium" href="https://prebuiltui.com">PrebuiltUI</a>. All Right Reserved.
+        Copyright 2025 ©. All Right Reserved.
       </p>
     </footer>
   );
