@@ -1,65 +1,96 @@
+// src/components/Tatacars.js
 "use client";
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import carsJson from "../data/tatacars.json";
 
-const cars = [
-  {
-    key: "sierra",
-    name: "Sierra",
-    tagline: "The Legend Returns",
-    description:
-      "Chaos Outside. Calm Within. Welcome Home, in every drive. Your commute, Reimagined.",
-    img: "/sierra2.png",
-    accentBg: "bg-yellow-500",
-    width: 1300,
-    height: 800,
-  },
-  {
-    key: "harrier",
-    name: "Harrier",
-    tagline: "Comfort meets Power",
-    description:
-      "A refined SUV with elegant styling and confident road manners — built for everyday adventures.",
-    img: "/harrier.png",
-    accentBg: "bg-gray-600",
-  },
-  {
-    key: "curvv",
-    name: "Curvv",
-    tagline: "Futuristic. Electrifying. Dynamic.",
-    description:
-      "The Tata Curvv blends coupe-inspired aerodynamics with modern SUV strength, offering a bold new design language and a tech-forward driving experience.",
-    img: "/Curvv1.png",
-    accentBg: "bg-amber-900",
-  },
-  {
-    key: "nexon",
-    name: "Nexon",
-    tagline: "Smart Compact SUV",
-    description:
-      "City-friendly with big SUV attitude—efficient, feature-rich and fun to drive.",
-    img: "/Nexon.png",
-    accentBg: "bg-red-700",
-  },
-  {
-    key: "safari",
-    name: "New Safari",
-    tagline: "Reclaim Your Life",
-    description:
-      "The New Safari epitomizes premium luxury with its opulent interiors, Plush Upholstery & advanced infotainment system.",
-    img: "/safari.png",
-    accentBg: "bg-amber-700",
-  },
-];
+// requested list (order matters)
+const SHOW_ONLY = ["Sierra", "Harrier", "Curvv", "Nexon", "New Safari"];
+
+// helper: normalize a name string for comparison
+const normalizeName = (s = "") =>
+  String(s)
+    .toLowerCase()
+    .replace(/[^a-z0-9]/g, ""); // remove spaces & non-alphanum
+
+const findBestMatch = (target, list) => {
+  const t = normalizeName(target);
+  // try exact normalized
+  let found = list.find((c) => normalizeName(c.name) === t);
+  if (found) return found;
+
+  // try includes: source includes target
+  found = list.find((c) => normalizeName(c.name).includes(t));
+  if (found) return found;
+
+  // try reverse: target includes source
+  found = list.find((c) => t.includes(normalizeName(c.name)));
+  if (found) return found;
+
+  // last resort: match by partial words (split)
+  const targetParts = target.toLowerCase().split(/\s+/).filter(Boolean);
+  for (const part of targetParts) {
+    found = list.find((c) => c.name.toLowerCase().includes(part));
+    if (found) return found;
+  }
+
+  return null;
+};
+
+// normalize the object into the shape the component expects
+const normalize = (c = {}, i) => ({
+  key: c.key || c.name?.toLowerCase().replace(/\s+/g, "-") || `car-${i}`,
+  name: c.name || `Car ${i + 1}`,
+  tagline: c.tagline || "",
+  description: c.description || "",
+  img: c.imageCard || c.image || c.img || "",
+  accentBg: c.accentBg || "bg-gray-300",
+  width: c.width || 1200,
+  height: c.height || 700,
+ 
+});
+
+// build final cars array in requested order, robust matching
+const cars = (() => {
+  if (!Array.isArray(carsJson)) return [];
+
+  const available = carsJson.map((c) => ({ ...c }));
+  const out = SHOW_ONLY.map((label, i) => {
+    const matched = findBestMatch(label, available);
+    if (matched) return normalize(matched, i);
+    // fallback: produce minimal entry with the label
+    return {
+      key: `fallback-${label.toLowerCase().replace(/\s+/g, "-")}`,
+      name: label,
+      tagline: "",
+      description: "",
+      img: "",
+      accentBg: "bg-gray-300",
+      width: 1200,
+      height: 700,
+     
+    };
+  });
+  return out;
+})();
 
 export default function CarShowcase() {
   const [selected, setSelected] = useState(0);
   const [imgLoaded, setImgLoaded] = useState(false);
 
-  useEffect(() => {
-    setImgLoaded(false);
-  }, [selected]);
+  useEffect(() => setImgLoaded(false), [selected]);
+
+  if (!cars.length) {
+    return (
+      <section className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
+        <h1 className="text-center mb-8 font-extrabold tracking-wide text-3xl uppercase text-black">
+          Tata Cars
+        </h1>
+        <p className="text-center text-gray-600">No cars found in JSON</p>
+      </section>
+    );
+  }
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-8 sm:py-12">
@@ -87,50 +118,38 @@ export default function CarShowcase() {
         ))}
       </div>
 
-      {/* Card: image + details */}
+      {/* Card */}
       <div className="rounded-2xl bg-white shadow-xl overflow-hidden">
-        {/* Use responsive layout: column on small, row on lg */}
         <div className="flex flex-col lg:flex-row items-stretch">
-          {/* Left: accent area + image */}
+          {/* Left: accent + image */}
           <div className="relative w-full lg:w-1/2 h-64 sm:h-80 md:h-96">
-            {/* left accent half (uses background color utility from item) */}
-            <div
-              className={`${cars[selected].accentBg} absolute inset-y-0 left-0 w-1/2`}
-              aria-hidden="true"
-            />
+            <div className={`${cars[selected].accentBg} absolute inset-y-0 left-0 w-1/2`} />
+            <div className="absolute inset-y-0 right-0 w-1/2 bg-white" />
 
-            {/* right subtle half */}
-            <div
-              className="absolute inset-y-0 right-0 w-1/2 bg-white"
-              aria-hidden="true"
-            />
-
-            {/* image container: center image and control size responsively */}
             <div className="relative w-full h-full flex items-center justify-center">
               <div className="w-11/12 sm:w-3/4 md:w-2/3 lg:w-3/5 h-full flex items-center justify-center">
-                <Image
-                  key={cars[selected].img}
-                  src={cars[selected].img}
-                  alt={cars[selected].name}
-                  width={cars[selected].width || 1200}
-                  height={cars[selected].height || 700}
-                  onLoadingComplete={() => setImgLoaded(true)}
-                  style={{
-                    objectFit: "contain",
-                    objectPosition: "center",
-                  }}
-                  className={`transition-opacity duration-500 ease-out ${
-                    imgLoaded ? "opacity-100" : "opacity-0"
-                  }`}
-                  priority
-                />
+                {cars[selected].img ? (
+                  <Image
+                    key={cars[selected].img}
+                    src={cars[selected].img}
+                    alt={cars[selected].name}
+                    width={cars[selected].width}
+                    height={cars[selected].height}
+                    onLoadingComplete={() => setImgLoaded(true)}
+                    className={`transition-opacity duration-500 ease-out ${
+                      imgLoaded ? "opacity-100" : "opacity-0"
+                    }`}
+                    style={{ objectFit: "contain", objectPosition: "center" }}
+                    priority
+                  />
+                ) : (
+                  <div className="text-gray-400">No image provided</div>
+                )}
               </div>
 
-              {/* shadow under car for depth (reduced on small screens) */}
               <div
                 className="absolute bottom-8 left-1/4 w-1/2 h-8 rounded-full filter blur-2xl opacity-60 hidden sm:block"
                 style={{ background: "rgba(0,0,0,0.22)" }}
-                aria-hidden="true"
               />
             </div>
           </div>
@@ -164,7 +183,6 @@ export default function CarShowcase() {
                 Pre-Book &rarr;
               </a>
 
-              {/* small dots / pagination like screenshot - responsive */}
               <div className="mt-2 sm:mt-0 flex items-center gap-2 ml-0 sm:ml-4">
                 {cars.map((_, i) => (
                   <button

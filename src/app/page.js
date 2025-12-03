@@ -9,10 +9,12 @@ export default function Home() {
   return (
       <div className="bg-white ">
     <HeroSection />
+    <NewLaunch />
         <InfoSection />
-        <NewLaunch />
+        
         <TataCars />
         <Dealership />
+        
       </div>
   );
 }
