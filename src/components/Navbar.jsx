@@ -6,7 +6,7 @@ import React from "react";
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
-    { name: "New Cars", path: "/newcars" },
+    { name: "Cars", path: "/newcars" },
     { name: "About Us", path: "/aboutus" },
     { name: "Contact Us", path: "/contactus" },
   ];
@@ -25,39 +25,36 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`w-full fixed top-0 left-0 z-50 flex items-center justify-between px-6 md:px-16 py-3 transition-all duration-300 ${isScrolled ? "bg-white " : "bg-transparent"}`}
+      className={`w-full fixed top-0 left-0 z-50 flex items-center justify-between px-6 md:px-16 py-4 transition-all duration-300 
+      ${isScrolled ? "bg-white shadow-lg" : "bg-white"}`}
     >
       {/* Logo */}
-      <a href="/">
+      <Link href="/">
         <img
           src="/logo.png"
           alt="logo"
-          className={`h-16 transition-all duration-300 ${isScrolled ? "invert-0" : "invert"}`}
+          className="h-14 transition-all duration-300"
         />
-      </a>
+      </Link>
 
       {/* Desktop Nav */}
-      <div className="hidden md:flex items-center gap-12">
+      <div className="hidden md:flex items-center gap-10">
         {navLinks.map((link, i) => (
           <Link
             key={i}
             href={link.path}
-            className={`font-medium transition-all duration-300 ${
-              isScrolled ? "text-black" : "text-white"
-            }`}
+            className="font-medium text-black hover:text-gray-600 transition-all duration-300"
           >
             {link.name}
           </Link>
         ))}
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* Mobile menu button */}
       <div className="md:hidden">
         <svg
           onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`h-7 w-7 cursor-pointer transition-all duration-300 ${
-            isScrolled ? "text-black" : "text-white"
-          }`}
+          className="h-8 w-8 cursor-pointer text-black"
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -69,18 +66,18 @@ const Navbar = () => {
         </svg>
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile dropdown */}
       {isMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-white/90 backdrop-blur-lg py-5 flex flex-col items-center gap-6 md:hidden shadow-md">
+        <div className="absolute top-full left-0 w-full bg-white py-6 flex flex-col items-center gap-6 md:hidden shadow-md">
           {navLinks.map((link, i) => (
-            <a
+            <Link
               key={i}
               href={link.path}
               className="text-black font-semibold text-lg"
               onClick={() => setIsMenuOpen(false)}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
         </div>
       )}
