@@ -20,7 +20,7 @@ export default function AboutUsPage() {
   }, []);
 
   return (
-    <main className="bg-white text-gray-800 mt-10">
+    <main className="bg-white text-gray-800 ">
       {/* HERO: video + intro */}
       <section className="max-w-6xl mx-auto px-4 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2">
