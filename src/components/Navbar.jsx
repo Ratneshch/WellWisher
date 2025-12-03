@@ -7,8 +7,8 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "New Cars", path: "/newcars" },
-    { name: "About Us", path: "/about" },
-    { name: "Contact Us", path: "/contact" },
+    { name: "About Us", path: "/aboutus" },
+    { name: "Contact Us", path: "/contactus" },
   ];
 
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
