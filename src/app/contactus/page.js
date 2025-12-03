@@ -32,7 +32,19 @@ export default function ContactForm() {
   };
 
   return (
+    <>
+    <div className="relative h-[350px] w-full rounded-9xl">
+          <img src="/shbanner.jpg" className="w-full object-cover h-full"></img>
+          <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/70" />
+          <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
+            <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">Contact Us</h1> 
+            <p className="text-xl w-1/3 text-center md:text-2xl font-medium mt- drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] text-white">
+              Make world-class mobility accessible to everyone.
+            </p>
+          </div>
+        </div>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex items-center justify-center p-6">
+      
       <form
         onSubmit={handleSubmit}
         className="bg-white shadow-xl border border-gray-100 rounded-2xl p-8 w-full max-w-lg"
@@ -111,5 +123,6 @@ export default function ContactForm() {
         )}
       </form>
     </div>
+    </>
   );
 }
