@@ -25,12 +25,12 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 bg-white`}
+      className={`fixed right-0 inset bg-transparent top-0 w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 ${isScrolled ? "bg-white" : "bg-linear-to-b from-black/70 via-transparent"}`}
     >
       {/* Logo */}
       <Link href="/" className="flex items-center">
-        <img src="/logo.png" alt="logo" className="h-20 w-25" />
-      </Link>
+        <img src="/logo.png" alt="logo" className="h-20 w-25 " />
+      </Link> 
 
       {/* Desktop Nav */}
       <div className="hidden md:flex items-center gap-4 lg:gap-12">
@@ -38,7 +38,7 @@ export default function Navbar() {
           <Link
             key={i}
             href={link.path}
-            className={`group flex flex-col  text-black`}
+            className={`group flex flex-col  ${isScrolled ? "text-black" : "text-white"}`}
           >
             {link.name}
             <div

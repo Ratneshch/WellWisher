@@ -13,16 +13,15 @@ export default function NewCarsPage() {
     <div className="min-h-screen bg-gray-50 text-black">
       <div className="max-w-8xl mx-auto">
 
-        <div className="relative h-[300px] w-full mb-5 rounded-9xl">
-          <img src="/shbanner.jpg" className="w-full object-cover h-[300px]"></img>
-          <div className="absolute inset-0 bg-linear-to-b from-black/70 via-transparent to-black/70" />
+        <div className="relative h-[350px] w-full mb-5 rounded-9xl">
+          <img src="/shbanner.jpg" className="w-full object-cover h-full"></img>
+          <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/70" />
           <div className="absolute inset-0 items-center justify-center flex flex-col">
-            <h1 className="text-4xl md:text-5xl font-bold text-white">Available Cars</h1> 
-            <p className="text-xl w-1/2 text-center md:text-2xl font-medium mt-1 text-white">
+            <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">Available Cars</h1> 
+            <p className="text-xl w-1/2 text-center md:text-2xl font-medium mt-1 text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">
               Browse our selection of premium vehicles available for your next adventure.
             </p>
           </div>
-                   
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-5">
