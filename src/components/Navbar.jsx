@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 // Import your full cars JSON file
-import carsJson from "../data/tatacars.json";
+import carsJson from "../../src/data/tatacars.json";
 
 const Navbar = () => {
   const navLinks = [
