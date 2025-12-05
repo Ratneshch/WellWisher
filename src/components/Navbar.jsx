@@ -3,7 +3,7 @@
 import Link from "next/link";
 import React from "react";
 
-export default function Navbar() {
+const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Cars", path: "/newcars" },
@@ -11,90 +11,116 @@ export default function Navbar() {
     { name: "Contact Us", path: "/contactus" },
   ];
 
+  const carsData = [
+    { id: 1, name: "TATA SIERRA" },
+    { id: 2, name: "TATA CURVV" },
+    { id: 3, name: "TATA SAFARI" },
+    { id: 4, name: "TATA HARRIER" },
+    { id: 5, name: "TATA NEXON" },
+    { id: 6, name: "TATA PUNCH" },
+    { id: 7, name: "TATA ALTROZ" },
+  ];
+
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [showDropdown, setShowDropdown] = React.useState(false);
+  const [mobileDropdown, setMobileDropdown] = React.useState(false);
 
   React.useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      window.scrollY > 20 ? setIsScrolled(true) : setIsScrolled(false);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <nav
-      className={`fixed right-0 inset bg-transparent top-0 w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 ${isScrolled ? "bg-white" : "bg-linear-to-b from-black/70 via-transparent"}`}
+      className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 ${
+        isScrolled ? "bg-white text-black" : "bg-linear-to-b from-black/70 via-transparent text-white"
+      }`}
     >
       {/* Logo */}
       <Link href="/" className="flex items-center">
-        <img src="/logo.png" alt="logo" className="h-20 w-25 " />
-      </Link> 
+        <img src="/logo.png" alt="logo" className="h-14 md:h-16 cursor-pointer" />
+      </Link>
 
-      {/* Desktop Nav */}
-      <div className="hidden md:flex items-center gap-4 lg:gap-12">
-        {navLinks.map((link, i) => (
-          <Link
-            key={i}
-            href={link.path}
-            className={`group flex flex-col  ${isScrolled ? "text-black" : "text-white"}`}
-          >
-            {link.name}
+      {/* DESKTOP NAV */}
+      <div className="hidden md:flex gap-10 items-center font-medium">
+        {navLinks.map((link) =>
+          link.name === "Cars" ? (
             <div
-              className={`${isScrolled ? "bg-gray-700" : "bg-white"} h-0.5 w-0 mt-1 group-hover:w-full transition-all duration-300`}
-            />
-          </Link>
-        ))}
+              key={link.name}
+              className="relative"
+              onMouseEnter={() => setShowDropdown(true)}
+              onMouseLeave={() => setShowDropdown(false)}
+            >
+              <Link href={link.path} className="transition-all duration-300">
+                {link.name}
+              </Link>
+
+              {showDropdown && (
+                <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md w-48 py-2 z-50">
+                  {carsData.map((car) => (
+                    <Link
+                      key={car.id}
+                      href={`/newcars/${car.id}`}
+                      className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700 whitespace-nowrap"
+                    >
+                      {car.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ) : (
+            <Link key={link.name} href={link.path} className="transition-all duration-300">
+              {link.name}
+            </Link>
+          )
+        )}
       </div>
 
-      {/* Desktop Right */}
+      {/* MOBILE ICON */}
+      <button
+        className="md:hidden text-3xl"
+        onClick={() => setIsMenuOpen(!isMenuOpen)}
+      >
+        ☰
+      </button>
 
-      {/* Mobile Menu Button */}
-      <div className="flex items-center gap-3 md:hidden">
-        <svg
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className={`h-6 w-6 cursor-pointer transition-all ${isScrolled ? "text-black" : "text-white"}`}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          viewBox="0 0 24 24"
-        >
-          <line x1="4" y1="6" x2="20" y2="6" />
-          <line x1="4" y1="12" x2="20" y2="12" />
-          <line x1="4" y1="18" x2="20" y2="18" />
-        </svg>
-      </div>
+      {/* MOBILE MENU */}
+      {isMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-white text-black shadow-md py-4 flex flex-col gap-4 font-medium md:hidden">
+          <Link href="/" className="px-6">Home</Link>
 
-      {/* Mobile Menu */}
-      <div
-  className={`fixed top-0 left-0 h-screen w-[300px] bg-white flex flex-col md:hidden 
-  items-start gap-6 pt-14 px-6 font-medium text-gray-800 transition-transform duration-500 z-[999]
-  ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
->
-  <button
-    className="absolute top-6 right-6 p-2"
-    onClick={() => setIsMenuOpen(false)}
-  >
-    <svg className="h-6 w-6" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
-      <line x1="18" y1="6" x2="6" y2="18" />
-      <line x1="6" y1="6" x2="18" y2="18" />
-    </svg>
-  </button>
+          {/* Mobile Cars Dropdown */}
+          <div className="px-6">
+            <button
+              onClick={() => setMobileDropdown(!mobileDropdown)}
+              className="w-full text-left flex justify-between items-center"
+            >
+              Cars
+              <span>{mobileDropdown ? "▲" : "▼"}</span>
+            </button>
 
-  {navLinks.map((link, i) => (
-    <a
-      key={i}
-      href={link.path}
-      onClick={() => setIsMenuOpen(false)}
-      className="text-lg hover:text-black transition-colors"
-    >
-      {link.name}
-    </a>
-  ))}
-</div>
+            {mobileDropdown && (
+              <div className="pl-4 mt-2 flex flex-col gap-2">
+                {carsData.map((car) => (
+                  <Link key={car.id} href={`/newcars/${car.id}`} className="text-sm hover:text-gray-600">
+                    {car.name}
+                  </Link>
+                ))}
+              </div>
+            )}
+          </div>
 
+          <Link href="/aboutus" className="px-6">About Us</Link>
+          <Link href="/contactus" className="px-6">Contact Us</Link>
+        </div>
+      )}
     </nav>
   );
-}
+};
 
+export default Navbar;

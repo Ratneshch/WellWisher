@@ -36,14 +36,14 @@ const HeroSection = () => {
       />
 
       {/* Overlay */}
-      <div className="absolute inset-0 bg-linear-to-b from-black/100 via-transparent to-black/70" />
+      <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/50 to-black/20" />
 
       {/* Content */}
       <div className="relative h-full flex items-center px-4 md:px-25">
         <div className="text-white space-y-2 md:space-y-4 text-center sm:text-left w-full sm:w-auto">
           <h1
             className="inline-block text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-wide leading-tight
-            bg-black/40 px-3 py-1 md:px-6 md:py-3 rounded-lg md:rounded-xl"
+             px-3 py-1 md:px-6 md:py-3 rounded-lg md:rounded-xl"
           >
             {currentCar.name.split(" ")[0]}{" "}
             <span style={{ color: currentCar.color }}>
