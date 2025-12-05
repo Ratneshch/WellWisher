@@ -3,6 +3,9 @@
 import Link from "next/link";
 import React from "react";
 
+// Import your full cars JSON file
+import carsJson from "../data/tatacars.json";
+
 const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
@@ -11,33 +14,49 @@ const Navbar = () => {
     { name: "Contact Us", path: "/contactus" },
   ];
 
-  const carsData = [
-    { id: 1, name: "TATA SIERRA" },
-    { id: 2, name: "TATA CURVV" },
-    { id: 3, name: "TATA SAFARI" },
-    { id: 4, name: "TATA HARRIER" },
-    { id: 5, name: "TATA NEXON" },
-    { id: 6, name: "TATA PUNCH" },
-    { id: 7, name: "TATA ALTROZ" },
-  ];
+  //  Automatically extract id + name from real JSON (nothing else changed)
+  const carsData = carsJson.map(car => ({
+    id: car.id,
+    name: car.name,
+  }));
 
   const [isScrolled, setIsScrolled] = React.useState(false);
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [showDropdown, setShowDropdown] = React.useState(false);
   const [mobileDropdown, setMobileDropdown] = React.useState(false);
 
+  const hideTimeout = React.useRef(null);
+
   React.useEffect(() => {
     const handleScroll = () => {
-      window.scrollY > 20 ? setIsScrolled(true) : setIsScrolled(false);
+      setIsScrolled(window.scrollY > 20);
     };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    };
   }, []);
+
+  const openDropdown = () => {
+    if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    hideTimeout.current = null;
+    setShowDropdown(true);
+  };
+
+  const delayedCloseDropdown = (delay = 150) => {
+    if (hideTimeout.current) clearTimeout(hideTimeout.current);
+    hideTimeout.current = setTimeout(() => {
+      setShowDropdown(false);
+      hideTimeout.current = null;
+    }, delay);
+  };
 
   return (
     <nav
       className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 ${
-        isScrolled ? "bg-white text-black" : "bg-linear-to-b from-black/70 via-transparent text-white"
+        isScrolled ? "bg-white text-black" : "bg-linear-to-b from-black/70 via-black/30 text-white"
       }`}
     >
       {/* Logo */}
@@ -52,20 +71,31 @@ const Navbar = () => {
             <div
               key={link.name}
               className="relative"
-              onMouseEnter={() => setShowDropdown(true)}
-              onMouseLeave={() => setShowDropdown(false)}
+              onMouseEnter={openDropdown}
+              onMouseLeave={() => delayedCloseDropdown(120)}
             >
               <Link href={link.path} className="transition-all duration-300">
                 {link.name}
               </Link>
 
               {showDropdown && (
-                <div className="absolute left-0 top-full mt-2 bg-white shadow-lg rounded-md w-48 py-2 z-50">
+                <div
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white shadow-lg rounded-md w-48 py-2 z-50"
+                  onMouseEnter={openDropdown}
+                  onMouseLeave={() => delayedCloseDropdown(120)}
+                >
                   {carsData.map((car) => (
                     <Link
                       key={car.id}
                       href={`/newcars/${car.id}`}
-                      className="block px-4 py-2 hover:bg-gray-100 text-sm text-gray-700 whitespace-nowrap"
+                      className="block px-10 py-2 hover:bg-gray-100 text-sm text-gray-700 whitespace-nowrap"
+                      onClick={() => {
+                        setShowDropdown(false);
+                        if (hideTimeout.current) {
+                          clearTimeout(hideTimeout.current);
+                          hideTimeout.current = null;
+                        }
+                      }}
                     >
                       {car.name}
                     </Link>
