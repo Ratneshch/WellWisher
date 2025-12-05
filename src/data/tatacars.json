@@ -1,12 +1,12 @@
-
 [
   {
     "id": 1,
     "name": "TATA SIERRA",
+    "slug": "tata-sierra",
     "tagline": "The Legend Returns",
     "description": "Chaos Outside. Calm Within. Welcome Home, in every drive. Your commute, Reimagined.",
     "image": "https://s7ap1.scene7.com/is/image/tatamotors/sierra-horses-desktop?$BA-1920-925-D$&fit=fit&fmt=avif-alpha",
-    "imageCard":"/sierra2.png",
+    "imageCard": "/sierra2.png",
     "color": "#F59E0B",
     "accentBg": "bg-yellow-500",
     "exShowroom": "11.49 Lakh (Expected)",
@@ -41,12 +41,13 @@
   {
     "id": 2,
     "name": "TATA SAFARI",
+    "slug": "tata-safari",
     "tagline": "Reclaim Your World",
     "description": "The Safari is built for those who love adventure and dominance on the road.",
     "image": "https://s7ap1.scene7.com/is/image/tatamotors/safari-book-test-drive?$B-1228-488-D$&fit=crop&fmt=avif-alpha",
-     "imageCard":"/safari.png",
+    "imageCard": "/safari.png",
     "color": "#DAAA5E",
-     "accentBg": "bg-amber-700",
+    "accentBg": "bg-amber-700",
     "exShowroom": "14.66 Lakh",
     "onRoad_Mumbai": "17.20 – 18.10 Lakh",
     "specifications": {
@@ -69,7 +70,7 @@
       "tyreSize": "215/65 R16 or 215/60 R17",
       "dimensions": {
         "length": "4,600 mm",
-        "width": "1,900 mm", 
+        "width": "1,900 mm",
         "height": "1,760 mm",
         "wheelbase": "2,741 mm"
       },
@@ -79,12 +80,13 @@
   {
     "id": 3,
     "name": "TATA HARRIER",
+    "slug": "tata-harrier",
     "tagline": "Comfort meets Power",
     "description": "A refined SUV with elegant styling and confident road manners.",
     "image": "https://s7ap1.scene7.com/is/image/tatamotors/banner-harrier?$B-1228-488-D$&fit=crop&fmt=avif-alpha",
-    "imageCard":"/harrier.png",
+    "imageCard": "/harrier.png",
     "color": "#d2c927",
-     "accentBg": "bg-gray-700",
+    "accentBg": "bg-gray-700",
     "exShowroom": "14.99 Lakh",
     "onRoad_Mumbai": "17.60 – 18.30 Lakh",
     "specifications": {
@@ -117,11 +119,12 @@
   {
     "id": 4,
     "name": "TATA PUNCH",
+    "slug": "tata-punch",
     "tagline": "Punch Above Its Weight",
     "description": "Compact SUV perfect for urban adventures.",
     "image": "https://cars.tatamotors.com/punch/assets/images/punch-exterior.jpg",
     "color": "#ff8a65",
-     "imageCard":"/punchCard.png",
+    "imageCard": "/punchCard.png",
     "exShowroom": "6.19 Lakh",
     "onRoad_Mumbai": "7.20 – 7.40 Lakh",
     "specifications": {
@@ -154,11 +157,12 @@
   {
     "id": 5,
     "name": "TATA TIAGO",
+    "slug": "tata-tiago",
     "tagline": "Smart. Stylish. Safe.",
     "description": "A practical hatchback balancing affordability and features.",
     "image": "https://cars.tatamotors.com/tiago/assets/images/tiago-exterior.jpg",
     "color": "#60a5fa",
-     "imageCard":"/tiagoCard.png",
+    "imageCard": "/tiagoCard.png",
     "exShowroom": "4.99 Lakh",
     "onRoad_Mumbai": "5.80 – 6.10 Lakh",
     "specifications": {
@@ -188,14 +192,16 @@
       "specsSource": "Tata Motors Official"
     }
   },
+
   {
     "id": 6,
     "name": "TATA TIGOR",
+    "slug": "tata-tigor",
     "tagline": "Style Meets Substance",
     "description": "A compact sedan offering comfortable seating and efficient drivetrains.",
     "image": "https://imgd.aeplcdn.com/1000x625/n/cw/ec/197758/tigor-exterior-left-front-three-quarter.avif",
     "color": "#34d399",
-     "imageCard":"/tigorCard.png",
+    "imageCard": "/tigorCard.png",
     "exShowroom": "5.49 Lakh",
     "onRoad_Mumbai": "6.40 – 6.70 Lakh",
     "specifications": {
@@ -225,14 +231,16 @@
       "specsSource": "Tata Motors Official"
     }
   },
+
   {
     "id": 7,
     "name": "TATA ALTROZ",
+    "slug": "tata-altroz",
     "tagline": "Born to Perform",
     "description": "A premium hatchback focused on safety, design, and driving dynamics.",
     "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/197760/altroz-exterior-front-three-quarter.avif",
     "color": "#a78bfa",
-      "imageCard":"/altrozCard.png",
+    "imageCard": "/altrozCard.png",
     "exShowroom": "6.30 Lakh",
     "onRoad_Mumbai": "7.40 – 7.80 Lakh",
     "specifications": {
@@ -262,15 +270,17 @@
       "specsSource": "Tata Motors Official / ARAI"
     }
   },
+
   {
     "id": 8,
     "name": "TATA NEXON",
+    "slug": "tata-nexon",
     "tagline": "Urban SUV. Boldly Safe.",
     "description": "A compact SUV known for strong safety ratings and efficient engines.",
     "image": "https://imgd.aeplcdn.com/1280x720/n/cw/ec/197761/nexon-exterior-front-three-quarter.avif",
     "color": "#f97316",
-    "imageCard":"/Nexon.png",
-     "accentBg": "bg-red-700",
+    "imageCard": "/Nexon.png",
+    "accentBg": "bg-red-700",
     "exShowroom": "7.32 Lakh",
     "onRoad_Mumbai": "8.60 – 9.10 Lakh",
     "specifications": {
@@ -300,15 +310,17 @@
       "specsSource": "Tata Motors Official"
     }
   },
+
   {
     "id": 9,
     "name": "TATA CURVV",
+    "slug": "tata-curvv",
     "tagline": "Style Meets Innovation",
     "description": "A futuristic SUV-coupé blending design, performance, and advanced technology.",
     "image": "https://cars.tatamotors.com/images/curvv/curvv-concept.jpg",
     "color": "#ff4f81",
-      "imageCard":"/Curvv1.png",
-     "accentBg": "bg-amber-900",
+    "imageCard": "/Curvv1.png",
+    "accentBg": "bg-amber-900",
     "exShowroom": "10.50 – 11.50 Lakh (Expected)",
     "onRoad_Mumbai": "12.80 – 13.90 Lakh (Estimated)",
     "specifications": {

@@ -16,7 +16,7 @@ const Navbar = () => {
 
   //  Automatically extract id + name from real JSON (nothing else changed)
   const carsData = carsJson.map(car => ({
-    id: car.id,
+    slug: car.slug,
     name: car.name,
   }));
 
@@ -87,7 +87,7 @@ const Navbar = () => {
                   {carsData.map((car) => (
                     <Link
                       key={car.id}
-                      href={`/newcars/${car.id}`}
+                      href={`/newcars/${car.slug}`}
                       className="block px-10 py-2 hover:bg-gray-100 text-sm text-gray-700 whitespace-nowrap"
                       onClick={() => {
                         setShowDropdown(false);
