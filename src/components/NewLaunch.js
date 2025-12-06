@@ -2,6 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import { Volume2, VolumeX } from "lucide-react";
+import Link from "next/link";
 
 const NewLaunch = () => {
   const videoRef = useRef(null);
@@ -97,12 +98,12 @@ const NewLaunch = () => {
           </ul>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#sell"
+            <Link
+              href="/newcars/tata-sierra"
               className="inline-flex items-center px-5 py-2.5 rounded-full bg-yellow-600 text-white text-sm font-medium shadow hover:opacity-95 transition"
             >
               Get Started
-            </a>
+            </Link>
 
            
           </div>
