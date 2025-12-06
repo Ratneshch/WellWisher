@@ -178,12 +178,12 @@ export default function CarShowcase() {
                 Learn More &rarr;
               </Link>
 
-              <a
-                href="#prebook"
+              <Link
+                href="/contactus"
                 className="w-full sm:w-auto text-center text-sm sm:text-sm rounded-full px-4 py-2 bg-yellow-600 text-white shadow hover:opacity-95"
               >
                 Pre-Book &rarr;
-              </a>
+              </Link>
 
               <div className="mt-2 sm:mt-0 flex items-center gap-2 ml-0 sm:ml-4">
                 {cars.map((_, i) => (

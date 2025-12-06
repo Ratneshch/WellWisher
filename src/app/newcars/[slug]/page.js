@@ -4,6 +4,7 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import cars from "../../../data/tatacars.json";
+import Link from "next/link";
 
 export default function CarDetailsPage() {
   const params = useParams();
@@ -127,9 +128,9 @@ export default function CarDetailsPage() {
                   )}
                 </div>
                 <div className="flex justify-center flex-wrap gap-3">
-                  <button className="px-5 py-2.5 rounded-full bg-amber-500 text-xs md:text-sm font-semibold text-black hover:bg-amber-400  transition cursor-pointer ">
+                  <Link href={"/contactus"} className="px-5 py-2.5 rounded-full bg-amber-500 text-xs md:text-sm font-semibold text-black hover:bg-amber-400  transition cursor-pointer ">
                     Pre-Book →
-                  </button>
+                  </Link >
                 </div>
               </div>
 

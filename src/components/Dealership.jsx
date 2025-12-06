@@ -22,7 +22,7 @@ const Dealership = () => {
         />
 
         <h2 className="text-xl sm:text-3xl font-extrabold leading-tight">
-          CAR DEALERSHIP <br /> AUTOMOTIVE WP THEME
+          CAR DEALERSHIP <br />WELLWISHER CARS
         </h2>
 
         <p className="text-xs sm:text-sm mt-3 sm:mt-5 font-medium opacity-90 leading-relaxed">
