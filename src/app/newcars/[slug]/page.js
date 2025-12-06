@@ -4,6 +4,7 @@
 import React from "react";
 import { useParams } from "next/navigation";
 import cars from "../../../data/tatacars.json";
+import Link from "next/link";
 
 export default function CarDetailsPage() {
   const params = useParams();
@@ -11,6 +12,12 @@ export default function CarDetailsPage() {
 
   const car = (cars || []).find((c) => c && String(c.slug) === String(slug));
   const specs = car?.specifications || {};
+
+  const extractVideoID = (url) => {
+  if (url.includes("youtu.be")) return url.split("youtu.be/")[1].split("?")[0];
+  if (url.includes("v=")) return url.split("v=")[1].split("&")[0];
+  return url;
+};
 
   if (!car) {
     return (
@@ -50,9 +57,9 @@ export default function CarDetailsPage() {
               </p>
             )}
             <div className="flex flex-wrap gap-3 pt-3 justify-center">
-              <button className="px-5 py-2.5 rounded-full bg-amber-500 text-sm font-semibold text-slate-900  hover:bg-amber-400 transition cursor-pointer">
+              <Link href="/contactus" className="px-5 py-2.5 rounded-full bg-amber-500 text-sm font-semibold text-slate-900  hover:bg-amber-400 transition cursor-pointer">
                 Enquiry Now
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -186,7 +193,22 @@ export default function CarDetailsPage() {
             </div>
 
           </div>
+        <section className="w-full mt-10">
+          <div className="w-full max-w-7xl mx-auto rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
+            <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px]">
+              <iframe
+                src={`https://www.youtube.com/embed/${extractVideoID(car.ytlink)}?autoplay=1&mute=1&loop=1&playlist=${extractVideoID(car.ytlink)}&controls=0&modestbranding=1`}
+                className="absolute inset-0 w-full h-full rounded-xl"
+                title={car.name}
+                allow="muted; loop; encrypted-media"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </div>
         </section>
+        </section>
+
+
       </div>
     </main>
   );
