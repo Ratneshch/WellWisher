@@ -42,6 +42,7 @@ const findBestMatch = (target, list) => {
 // normalize the object into the shape the component expects
 const normalize = (c = {}, i) => ({
   key: c.key || c.name?.toLowerCase().replace(/\s+/g, "-") || `car-${i}`,
+  slug: c.slug || c.name?.toLowerCase().replace(/\s+/g, "-"),
   name: c.name || `Car ${i + 1}`,
   tagline: c.tagline || "",
   description: c.description || "",
