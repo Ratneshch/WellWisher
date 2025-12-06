@@ -149,27 +149,24 @@ export default function CarDetailsPage() {
     <div className="space-y-9">
       <div className="flex items-center justify-between gap-3">
         <div>
-          <h3 className="text-lg md:text-xl font-bold tracking-[0.18em] uppercase text-slate-900">
+          <h3 className="text-xl md:text-2xl font-bold tracking-[0.18em] uppercase text-slate-900">
             Specifications
           </h3>
           <p className="text-xs text-slate-700 mt-1">
             Engine, performance, dimensions and more
           </p>
         </div>
-        <div className="text-right text-[12px] font-medium text-slate-900">
-          {specs.fuelType} • {specs.seatingCapacity} Seater
-        </div>
       </div>
 
-      <dl className="text-[14px] md:text-sm text-slate-900 font-medium">
-        <SpecItem label="Mileage" value={specs.mileage} />
-        <SpecItem label="Engine" value={specs.engine} />
-        <SpecItem label="Safety" value={specs.safety} />
-        <SpecItem label="Fuel Type" value={specs.fuelType} />
-        <SpecItem label="Transmission" value={specs.transmission} />
-        <SpecItem label="Seating Capacity" value={specs.seatingCapacity} />
-        <SpecItem label="Fuel Tank" value={specs.fuelTank} />
-        <SpecItem label="Tyre Size" value={specs.tyreSize} />
+      <dl className="grid grid-cols-1 md:grid-cols-2 space-y-4 text-[14px] md:text-[16px] text-slate-900 font-medium">
+        <SpecItem label="Mileage-" value={specs.mileage}/>
+        <SpecItem label="Engine-" value={specs.engine} />
+        <SpecItem label="Safety-" value={specs.safety} />
+        <SpecItem label="Fuel Type-" value={specs.fuelType} />
+        <SpecItem label="Transmission-" value={specs.transmission} />
+        <SpecItem label="Seating Capacity-" value={specs.seatingCapacity} />
+        <SpecItem label="Fuel Tank-" value={specs.fuelTank} />
+        <SpecItem label="Tyre Size-" value={specs.tyreSize} />
       </dl>
 
       {specs.specsSource && (
@@ -199,7 +196,7 @@ function SpecItem({ label, value }) {
   if (!value) return null;
   return (
     <div className="flex flex-col">
-      <dt className="text-[11px] uppercase tracking-[0.18em] text-slate-900">
+      <dt className="text-[15px] uppercase tracking-[0.18em] text-slate-900">
         {label}
       </dt>
       <dd className="font-medium text-slate-800 mt-0.5">
