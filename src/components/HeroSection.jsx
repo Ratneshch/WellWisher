@@ -43,7 +43,7 @@ const HeroSection = () => {
         <div className="text-white space-y-2 md:space-y-4 text-center sm:text-left w-full sm:w-auto">
           <h1
             className="inline-block text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-wide leading-tight
-             px-3 py-1 md:px-6 md:py-3 rounded-lg md:rounded-xl"
+              py-1  md:py-3 rounded-lg  md:rounded-xl"
           >
             {currentCar.name.split(" ")[0]}{" "}
             <span style={{ color: currentCar.color }}>
@@ -77,7 +77,7 @@ const HeroSection = () => {
         onClick={nextSlide}
         className="absolute right-2 md:right-5 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 flex items-center justify-center hover:bg-black/70"
       >
-        <ChevronRight size={20} className="text-white" />
+        <ChevronRight size={46} className="text-white" />
       </button>
 
       {/* Dots */}
