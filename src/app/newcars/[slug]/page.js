@@ -1,95 +1,223 @@
 // app/newcars/[slug]/page.js
 "use client";
 
-import React, { useEffect, useState } from "react";
-import { usePathname } from "next/navigation";
-
-// Adjust this import if your JSON is located elsewhere.
-// From app/newcars/[slug]/page.js -> up two levels to app, then into data:
-// import cars from "../../data/tatacars.json";
+import React from "react";
+import { useParams } from "next/navigation";
 import cars from "../../../data/tatacars.json";
 
-export default function CarSpecsPage() {
-  const pathname = usePathname();
-  const [slug, setSlug] = useState("");
-  const [specs, setSpecs] = useState(null);
-  const [tried, setTried] = useState(false);
+export default function CarDetailsPage() {
+  const params = useParams();
+  const slug = params?.slug;
 
-  useEffect(() => {
-    const path = pathname || (typeof window !== "undefined" ? window.location.pathname : "");
-    const parts = path.split("/").filter(Boolean);
-    const last = parts.length ? parts[parts.length - 1] : "";
-    setSlug(last);
+  const car = (cars || []).find((c) => c && String(c.slug) === String(slug));
+  const specs = car?.specifications || {};
 
-    if (last) {
-      const found = (cars || []).find((c) => c && String(c.slug) === String(last));
-      setSpecs(found && found.specifications ? found.specifications : null);
-    } else {
-      setSpecs(null);
-    }
-
-    setTried(true);
-  }, [pathname]);
-
-  if (!tried) return null;
-
-  if (!specs) {
+  if (!car) {
     return (
-      <main className="min-h-screen flex items-center justify-center p-6">
-        <div className="text-center">
-          <p className="text-gray-600">Car specifications not found for <strong>{slug || "(no slug provided)"}</strong>.</p>
-        </div>
+      <main className="min-h-screen flex items-center justify-center bg-slate-950 px-6">
+        <p className="text-slate-400 text-center text-sm md:text-base">
+          Car details not found for{" "}
+          <strong className="text-slate-100">
+            {slug || "(no slug provided)"}
+          </strong>
+          .
+        </p>
       </main>
     );
   }
 
-  // Render only the specification fields present in the JSON (no extras)
   return (
-    <main className="max-w-5xl mx-auto p-6">
-      <div className="space-y-2">
-        <SpecRow label="Mileage" value={specs.mileage || "N/A"} />
-        <SpecRow label="Engine" value={specs.engine || "N/A"} />
-        <SpecRow label="Power" value={specs.power || "N/A"} />
-        <SpecRow label="Torque" value={specs.torque || "N/A"} />
-        <SpecRow label="Safety" value={specs.safety || "N/A"} />
-        <SpecRow label="Fuel Type" value={specs.fuelType || "N/A"} />
-        <SpecRow label="Transmission" value={specs.transmission || "N/A"} />
-        <SpecRow label="Seating Capacity" value={specs.seatingCapacity || "N/A"} />
-        <SpecRow label="Boot Capacity" value={specs.bootCapacity || "N/A"} />
-        <SpecRow label="Ground Clearance" value={specs.groundClearance || "N/A"} />
-        <SpecRow label="Fuel Tank" value={specs.fuelTank || "N/A"} />
-        <SpecRow label="Drivetrain" value={specs.drivetrain || "N/A"} />
-        <SpecRow label="Suspension Front" value={specs.suspensionFront || "N/A"} />
-        <SpecRow label="Suspension Rear" value={specs.suspensionRear || "N/A"} />
-        <SpecRow label="Brakes Front" value={specs.brakesFront || "N/A"} />
-        <SpecRow label="Brakes Rear" value={specs.brakesRear || "N/A"} />
-        <SpecRow label="Tyre Size" value={specs.tyreSize || "N/A"} />
+    <main className="min-h-screen text-black">
+      {/* HERO */}
+      <section className=" relative h-[360px] md:h-[450px] w-full overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-black">
+        {/* Background image with overlay */}
+        <img
+          src={car.image}
+          alt={car.name}
+          className="absolute inset-0 w-full h-full object-cover scale-110 blur-[2px] opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-black/90" />
 
-        {/* dimensions is nested in JSON — render subfields exactly as present */}
-        {specs.dimensions && (
-          <div className="pt-4">
-            <div className="text-sm font-semibold mb-2">Dimensions</div>
-            <div className="space-y-1">
-              <SpecRow label="Length" value={specs.dimensions.length || "N/A"} />
-              <SpecRow label="Width" value={specs.dimensions.width || "N/A"} />
-              <SpecRow label="Height" value={specs.dimensions.height || "N/A"} />
-              <SpecRow label="Wheelbase" value={specs.dimensions.wheelbase || "N/A"} />
+        {/* Content */}
+        <div className="relative max-w-6xl mx-auto h-full flex flex-col md:flex-row items-center justify-between px-6 md:px-8">
+          <div className="max-w-xl space-y-4 md:space-y-5 mx-auto text-center ">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-black tracking-tight text-gray-50">
+              {car.name}
+            </h1>
+            {car.tagline && (
+              <p className="text-xl md:text-2xl text-slate-300 max-w-md">
+                {car.tagline}
+              </p>
+            )}
+            <div className="flex flex-wrap gap-3 pt-3 justify-center">
+              <button className="px-5 py-2.5 rounded-full bg-amber-500 text-sm font-semibold text-slate-900  hover:bg-amber-400 transition cursor-pointer">
+                Enquiry Now
+              </button>
             </div>
-          </div>
+          </div>  
+          </div>  
+      </section>
+
+      {/* MAIN CONTENT */}
+      <div className="max-w-6xl mx-auto px-4 lg:px-6 pb-12 space-y-10 -mt-10 md:-mt-14 relative z-10">
+  {/* PRICE / OVERVIEW CARD */}
+  <section className="bg-linear-to-br from-slate-50 via-white to-slate-100 border border-slate-200/80 rounded-3xl shadow-[0_18px_60px_rgba(15,23,42,0.16)] overflow-hidden backdrop-blur-xl">
+    <div className="flex flex-col md:flex-row">
+      {/* Left: Accent panel */}
+      <div
+        className={`relative flex items-center justify-center w-full md:w-5/10 min-h-[260px] p-7 md:p-8 ${car.accentBg} bg-gradient-to-br from-amber-50 via-orange-50 to-slate-50`}
+      >
+        <div className="absolute inset-0 opacity-25 mix-blend-screen bg-[radial-gradient(circle_at_top,#ffffff33,transparent_55%),radial-gradient(circle_at_bottom,#0000001a,transparent_55%)]" />
+        <div className="absolute -right-8 top-0 bottom-0 w-16 hidden md:block" />
+        <img
+          src={car.imageCard || car.image}
+          alt={car.name}
+          className="relative z-10 w-full max-w-sm object-contain drop-shadow-[0_18px_45px_rgba(15,23,42,0.25)]"
+        />
+        <div
+          className="absolute top-5 left-6 text-[16px] font-semibold tracking-[0.25em] uppercase text-black"
+        >
+          {car.name}
+        </div>
+      </div>
+
+      {/* Right: Content */}
+      <div className="w-full md:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col text-end items-end gap-5">
+        <div className="text-end">
+          <h2 className="text-2xl md:text-4xl font-black tracking-tight text-slate-900">
+            {car.name}
+          </h2>
+          {car.tagline && (
+            <p className="text-sm md:text-base text-slate-800 mt-2 max-w-lg ">
+              {car.tagline}
+            </p>
+          )}
+        </div>
+
+        {car.description && (
+          <p className="text-sm md:text-[15px] leading-relaxed text-slate-700 max-w-xl">
+            {car.description}
+          </p>
         )}
 
-        <SpecRow label="Specs Source" value={specs.specsSource || "N/A"} />
+        {/* Key highlights chips */}
+        <div className="flex flex-wrap gap-2 pt-1 text-[11px] md:text-[12px] justify-end ">
+          {specs.safety && <Badge>{specs.safety}</Badge>}
+          {specs.power && <Badge>{specs.power}</Badge>}
+          {specs.mileage && <Badge>{specs.mileage} mileage</Badge>}
+          {specs.transmission && <Badge>{specs.transmission}</Badge>}
+        </div>
+
+        {/* Price & CTAs */}
+        <div className="flex flex-col sm:items-end sm:justify-between gap-4 pt-2">
+          <div>
+            <p className="text-xs uppercase tracking-[0.25em] text-slate-800">
+              Starting ex-showroom
+            </p>
+            <p className="text-2xl md:text-3xl font-black text-amber-500 mt-1">
+              ₹ {car.exShowroom}
+            </p>
+            {car.onRoad_Mumbai && (
+              <p className="text-xs text-slate-700 mt-1">
+                On-road Mumbai from{" "}
+                <span className="font-medium text-slate-800">
+                  {car.onRoad_Mumbai}
+                </span>
+              </p>
+            )}
+          </div>
+          <div className="flex flex-wrap gap-3">
+            <button className="px-5 py-2.5 rounded-full bg-amber-500 text-xs md:text-sm font-semibold text-black hover:bg-amber-400  transition cursor-pointer">
+              Pre-Book →
+            </button>
+          </div>
+        </div>
+
+        <p className="text-[10px] text-slate-400 mt-1">
+          Prices shown are indicative. Final offer price will be shared by your
+          nearest dealer.
+        </p>
       </div>
+    </div>
+  </section>
+
+  {/* SPECS + IMAGE SECTION */}
+  <section className="bg-white border border-slate-300 rounded-3xl p-6 md:p-10 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
+  <div className="grid md:grid-cols-2 gap-10 items-center">
+
+    {/* LEFT - Specs */}
+    <div className="space-y-9">
+      <div className="flex items-center justify-between gap-3">
+        <div>
+          <h3 className="text-lg md:text-xl font-bold tracking-[0.18em] uppercase text-slate-900">
+            Specifications
+          </h3>
+          <p className="text-xs text-slate-700 mt-1">
+            Engine, performance, dimensions and more
+          </p>
+        </div>
+        <div className="text-right text-[12px] font-medium text-slate-900">
+          {specs.fuelType} • {specs.seatingCapacity} Seater
+        </div>
+      </div>
+
+      <dl className="text-[14px] md:text-sm text-slate-900 font-medium">
+        <SpecItem label="Mileage" value={specs.mileage} />
+        <SpecItem label="Engine" value={specs.engine} />
+        <SpecItem label="Safety" value={specs.safety} />
+        <SpecItem label="Fuel Type" value={specs.fuelType} />
+        <SpecItem label="Transmission" value={specs.transmission} />
+        <SpecItem label="Seating Capacity" value={specs.seatingCapacity} />
+        <SpecItem label="Fuel Tank" value={specs.fuelTank} />
+        <SpecItem label="Tyre Size" value={specs.tyreSize} />
+      </dl>
+
+      {specs.specsSource && (
+        <p className="text-[11px] text-slate-600">
+          Specifications as shared by {specs.specsSource}.
+        </p>
+      )}
+    </div>
+
+    {/* RIGHT - Image */}
+    <div className="flex items-center justify-center">
+      <img
+        src={car.imageCard}
+        alt={car.name}
+        className="w-full h-full object-contain p-4"
+      />
+    </div>
+
+  </div>
+</section>
+</div>
     </main>
   );
 }
 
-/* simple presentational row used only for the JSON fields */
-function SpecRow({ label, value }) {
+function SpecItem({ label, value }) {
+  if (!value) return null;
   return (
-    <div className="flex justify-between items-start border-b pb-2">
-      <div className="text-sm text-gray-700">{label}</div>
-      <div className="text-sm font-medium text-gray-900 text-right ml-4">{value}</div>
+    <div className="flex flex-col">
+      <dt className="text-[11px] uppercase tracking-[0.18em] text-slate-900">
+        {label}
+      </dt>
+      <dd className="font-medium text-slate-800 mt-0.5">
+        {value}
+      </dd>
     </div>
   );
 }
+
+function Badge({ children }) {
+  return (
+    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full
+                     bg-white border border-black text-slate-900
+                     text-[11px] md:text-[12px] font-medium
+                     shadow-[0_8px_18px_rgba(15,23,42,0.18)]">
+      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
+      {children}
+    </span>
+  );
+}
+
