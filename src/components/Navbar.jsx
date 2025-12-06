@@ -14,8 +14,9 @@ const Navbar = () => {
     { name: "Contact Us", path: "/contactus" },
   ];
 
-  //  Automatically extract id + name from real JSON (nothing else changed)
-  const carsData = carsJson.map(car => ({
+  //  Automatically extract id + slug + name from real JSON
+  const carsData = carsJson.map((car) => ({
+    id: car.id,
     slug: car.slug,
     name: car.name,
   }));
@@ -56,7 +57,9 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 ${
-        isScrolled ? "bg-white text-black" : "bg-linear-to-b from-black/70 via-black/30 text-white"
+        isScrolled
+          ? "bg-white text-black"
+          : "bg-linear-to-b from-black/70 via-black/30 text-white"
       }`}
     >
       {/* Logo */}
@@ -104,7 +107,11 @@ const Navbar = () => {
               )}
             </div>
           ) : (
-            <Link key={link.name} href={link.path} className="transition-all duration-300">
+            <Link
+              key={link.name}
+              href={link.path}
+              className="transition-all duration-300"
+            >
               {link.name}
             </Link>
           )
@@ -122,31 +129,67 @@ const Navbar = () => {
       {/* MOBILE MENU */}
       {isMenuOpen && (
         <div className="absolute top-full left-0 w-full bg-white text-black shadow-md py-4 flex flex-col gap-4 font-medium md:hidden">
-          <Link href="/" className="px-6">Home</Link>
+          <Link
+            href="/"
+            className="px-6"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Home
+          </Link>
 
-          {/* Mobile Cars Dropdown */}
-          <div className="px-6">
-            <button
-              onClick={() => setMobileDropdown(!mobileDropdown)}
-              className="w-full text-left flex justify-between items-center"
-            >
-              Cars
-              <span>{mobileDropdown ? "▲" : "▼"}</span>
-            </button>
+        {/* Mobile Cars Dropdown */}
+<div className="px-6">
+  <div className="w-full flex justify-between items-center">
+    {/* Cars text → navigate like desktop */}
+    <Link
+      href="/newcars"
+      className="text-left"
+      onClick={() => {
+        setIsMenuOpen(false);
+        setMobileDropdown(false);
+      }}
+    >
+      Cars
+    </Link>
 
-            {mobileDropdown && (
-              <div className="pl-4 mt-2 flex flex-col gap-2">
-                {carsData.map((car) => (
-                  <Link key={car.id} href={`/newcars/${car.id}`} className="text-sm hover:text-gray-600">
-                    {car.name}
-                  </Link>
-                ))}
-              </div>
-            )}
-          </div>
+    {/* Arrow → toggle dropdown only */}
+    <button onClick={() => setMobileDropdown(!mobileDropdown)}>
+      {mobileDropdown ? "▲" : "▼"}
+    </button>
+  </div>
 
-          <Link href="/aboutus" className="px-6">About Us</Link>
-          <Link href="/contactus" className="px-6">Contact Us</Link>
+  {mobileDropdown && (
+    <div className="pl-4 mt-2 flex flex-col gap-2">
+      {carsData.map((car) => (
+        <Link
+          key={car.id}
+          href={`/newcars/${car.slug}`}
+          className="text-sm hover:text-gray-600"
+          onClick={() => {
+            setIsMenuOpen(false);
+            setMobileDropdown(false);
+          }}
+        >
+          {car.name}
+        </Link>
+      ))}
+    </div>
+  )}
+</div>
+          <Link
+            href="/aboutus"
+            className="px-6"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            About Us
+          </Link>
+          <Link
+            href="/contactus"
+            className="px-6"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Contact Us
+          </Link>
         </div>
       )}
     </nav>

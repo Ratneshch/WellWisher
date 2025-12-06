@@ -82,7 +82,7 @@ export default function CarDetailsPage() {
             </div>
 
             {/* Right: Content */}
-            <div className="w-full md:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col text-end items-end gap-5">
+            <div className="w-full md:w-7/12 p-6 md:p-10 lg:p-12 flex flex-col md:text-end md:items-end gap-5 text-center items-center ">
               <div className="text-end">
                 <h2 className="text-2xl md:text-4xl font-black tracking-tight text-slate-900">
                   {car.name}
@@ -101,7 +101,7 @@ export default function CarDetailsPage() {
               )}
 
               {/* Key highlights chips */}
-              <div className="flex flex-wrap gap-2 pt-1 text-[11px] md:text-[12px] justify-end ">
+              <div className="flex flex-wrap gap-2 pt-1 text-[11px] md:text-[12px] md:justify-end justify-center">
                 {specs.safety && <Badge>{specs.safety}</Badge>}
                 {specs.power && <Badge>{specs.power}</Badge>}
                 {specs.mileage && <Badge>{specs.mileage} mileage</Badge>}
@@ -126,8 +126,8 @@ export default function CarDetailsPage() {
                     </p>
                   )}
                 </div>
-                <div className="flex flex-wrap gap-3">
-                  <button className="px-5 py-2.5 rounded-full bg-amber-500 text-xs md:text-sm font-semibold text-black hover:bg-amber-400  transition cursor-pointer">
+                <div className="flex justify-center flex-wrap gap-3">
+                  <button className="px-5 py-2.5 rounded-full bg-amber-500 text-xs md:text-sm font-semibold text-black hover:bg-amber-400  transition cursor-pointer ">
                     Pre-Book →
                   </button>
                 </div>
@@ -147,18 +147,18 @@ export default function CarDetailsPage() {
 
             {/* LEFT - Specs */}
             <div className="space-y-9">
-              <div className="flex items-center justify-between gap-3">
-                <div>
-                  <h3 className="text-xl md:text-2xl font-bold tracking-[0.18em] uppercase text-slate-900">
+              <div className="flex items-center justify-between gap-3 ">
+                <div className=" mx-auto ">
+                  <h3 className="text-xl md:text-2xl font-bold tracking-[0.18em]  uppercase text-slate-900 ml-3 md:mr-108">
                     Specifications
                   </h3>
-                  <p className="text-xs text-slate-700 mt-1">
+                  <p className="text-xs text-slate-700 mt-1 md:ml-3">
                     Engine, performance, dimensions and more
                   </p>
                 </div>
               </div>
 
-              <dl className="grid grid-cols-1 md:grid-cols-2 space-y-4 gap-x-5 text-[14px] md:text-[16px] text-slate-900 font-medium">
+              <dl className="grid grid-cols-1 md:grid-cols-2 space-y-4 gap-x-5 text-[14px] md:text-[16px] text-slate-900 font-medium text-center md:text-start">
                 <SpecItem label="Mileage-" value={specs.mileage} />
                 <SpecItem label="Engine-" value={specs.engine} />
                 <SpecItem label="Safety-" value={specs.safety} />
@@ -170,7 +170,7 @@ export default function CarDetailsPage() {
               </dl>
 
               {specs.specsSource && (
-                <p className="text-[11px] text-slate-600">
+                <p className="text-[11px] text-slate-600 text-center md:text-start">
                   Specifications as shared by {specs.specsSource}.
                 </p>
               )}
