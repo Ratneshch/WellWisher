@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import carsJson from "../data/tatacars.json";
+import Link from "next/link";
 
 // requested list (order matters)
 const SHOW_ONLY = ["Sierra","New Safari", "Harrier", "Nexon", "Curvv" ];
@@ -169,12 +170,12 @@ export default function CarShowcase() {
             </p>
 
             <div className="mt-6 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
-              <a
-                href="#learn"
+              <Link
+                href={`/newcars/${cars[selected].slug}`}
                 className="w-full sm:w-auto text-center text-sm sm:text-sm border rounded-full px-4 py-2 inline-flex items-center justify-center hover:bg-gray-50"
               >
                 Learn More &rarr;
-              </a>
+              </Link>
 
               <a
                 href="#prebook"

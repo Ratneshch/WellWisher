@@ -7,6 +7,7 @@ import cars from "@/data/tatacars.json"; // <-- correct path from app/ folder
 import { FiUser, FiMapPin } from "react-icons/fi";
 import { MdLocalGasStation } from "react-icons/md";
 import { GiGearStick } from "react-icons/gi";
+import Link from "next/link";
 
 export default function NewCarsPage() {
   return (
@@ -83,12 +84,12 @@ export default function NewCarsPage() {
                 <div className="flex justify-between items-center mt-5">
                  
 
-                  <a
-                    href={`/car/${car.id}`}
+                  <Link
+                    href={`/newcars/${car.slug}`}
                     className="text-blue-600 text-sm font-medium hover:underline"
                   >
                     View Details →
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
