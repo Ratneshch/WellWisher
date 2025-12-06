@@ -18,6 +18,14 @@ const HeroSection = () => {
 
   const currentCar = carData[currIndex];
 
+   React.useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrIndex((prev) => (prev + 1) % carData.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [carData.length]);
+
   const prevSlide = () => {
     setCurrIndex((prev) => (prev - 1 + carData.length) % carData.length);
   };
