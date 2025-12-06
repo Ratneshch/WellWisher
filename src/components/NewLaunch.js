@@ -29,7 +29,7 @@ const NewLaunch = () => {
 
   return (
     <section className="py-8">
-      <div className="text-center mb-16 mt-10">
+      <div className="text-center mb-16 mt-2">
         <p className="text-6xl text-black uppercase font-extrabold tracking-wide">Newly Launch</p>
       </div>
 
