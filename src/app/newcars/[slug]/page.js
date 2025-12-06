@@ -197,11 +197,11 @@ export default function CarDetailsPage() {
           <div className="w-full max-w-7xl mx-auto rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
             <div className="relative w-full h-64 sm:h-80 md:h-96 lg:h-[500px]">
               <iframe
-                src={`https://www.youtube.com/embed/${extractVideoID(car.ytlink)}?autoplay=1&mute=1&loop=1&playlist=${extractVideoID(car.ytlink)}&controls=0&modestbranding=1`}
+                src={car.ytlink}
                 className="absolute inset-0 w-full h-full rounded-xl"
                 title={car.name}
-                allow="muted; loop; encrypted-media"
-                allowFullScreen
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
               ></iframe>
             </div>
           </div>
