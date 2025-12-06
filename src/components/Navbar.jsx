@@ -57,7 +57,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 lg:px-24 xl:px-32 transition-all duration-500 ${
+        className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 transition-all duration-500 ${
           isScrolled
             ? "bg-white text-black"
             : "bg-linear-to-b from-black/70 via-black/30 text-white"
@@ -117,6 +117,11 @@ const Navbar = () => {
               </Link>
             )
           )}
+          <div>
+            <Link href="/contactus" className={`px-5 py-2 bg-amber-500 rounded-2xl font-semibold transition-all duration-500 ${isScrolled ? "text-black" : "text-white"}`}>
+            Book Test Drive
+            </Link>
+          </div>
         </div>
 
         {/* MOBILE ICON */}
