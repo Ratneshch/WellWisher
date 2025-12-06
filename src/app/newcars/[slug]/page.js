@@ -114,7 +114,7 @@ export default function CarDetailsPage() {
                   <p className="text-xs uppercase tracking-[0.25em] text-slate-800">
                     Starting ex-showroom
                   </p>
-                  <p className="text-2xl md:text-3xl font-black text-amber-500 mt-1">
+                  <p className="text-2xl md:text-3xl font-black text-black mt-1">
                     ₹ {car.exShowroom}
                   </p>
                   {car.onRoad_Mumbai && (
@@ -196,7 +196,7 @@ function SpecItem({ label, value }) {
   if (!value) return null;
   return (
     <div className="flex flex-col">
-      <dt className="text-[15px] uppercase tracking-[0.18em] text-slate-900">
+      <dt className="text-[15px] uppercase  text-slate-900">
         {label}
       </dt>
       <dd className="font-medium text-slate-800 mt-0.5">
