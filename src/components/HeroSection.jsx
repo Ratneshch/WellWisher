@@ -3,6 +3,7 @@
 import React from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import carDataJSON from "@/data/tatacars.json";
+import Link from "next/link";
 
 const HeroSection = () => {
   const [currIndex, setCurrIndex] = React.useState(0);
@@ -27,7 +28,6 @@ const HeroSection = () => {
 
   return (
     <div className="w-full h-[480px] md:h-[600px] relative overflow-hidden mb-10 ">
-
       {/* Background Image */}
       <img
         src={currentCar.image}
@@ -59,9 +59,12 @@ const HeroSection = () => {
             {currentCar.description}
           </p>
 
-          <button className="block mx-auto sm:mx-0 px-10 cursor-pointer py-2 mt-2 text-sm sm:text-base md:text-lg font-semibold bg-black/50 rounded-2xl border border-white/40 hover:bg-black/70">
+          <Link
+            href="/contactus"
+            className="inline-flex items-center justify-center mx-auto sm:mx-0 px-10 py-2 mt-2 text-sm sm:text-base md:text-lg font-semibold bg-black/50 rounded-2xl border border-white/50 hover:bg-black/70 transition"
+          >
             Book Now
-          </button>
+          </Link>
         </div>
       </div>
 
