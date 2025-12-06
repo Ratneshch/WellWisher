@@ -77,7 +77,7 @@ const HeroSection = () => {
         onClick={nextSlide}
         className="absolute right-2 md:right-5 top-1/2 -translate-y-1/2 w-8 h-8 md:w-12 md:h-12 rounded-full bg-black/40 flex items-center justify-center hover:bg-black/70"
       >
-        <ChevronRight size={20} className="text-white" />
+        <ChevronRight size={46} className="text-white" />
       </button>
 
       {/* Dots */}
