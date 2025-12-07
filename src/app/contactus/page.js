@@ -83,7 +83,7 @@ export default function ContactForm() {
       {/* HERO SECTION */}
       <div className="relative h-[350px] w-full rounded-9xl">
         <img
-          src="/shbanner.jpg"
+          src="https://t4.ftcdn.net/jpg/05/24/03/99/360_F_524039911_SJfffOLKTk1HZvTPyF9vv1FN6oCipyVi.jpg"
           className="w-full object-cover h-full"
           alt="Hero Banner"
         />

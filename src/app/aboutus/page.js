@@ -22,14 +22,14 @@ export default function AboutUsPage() {
   return (
     <main className="bg-white text-gray-800 ">
       <div className="relative h-[350px] w-full mb-5 rounded-9xl">
-          <img src="/shbanner.jpg" className="w-full object-cover h-full"></img>
+          <img src="https://www.durawell.co.in/assets/products/product-banner/about-us.jpg" className="w-full object-cover h-full"></img>
           <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/70" />
-          <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
+          {/* <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
             <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">About Us</h1> 
             <p className="text-xl w-1/3 text-center md:text-2xl font-medium mt- drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] text-white">
               Make world-class mobility accessible to everyone.
             </p>
-          </div>
+          </div> */}
         </div>
       {/* HERO: video + intro */}
       <section className="max-w-6xl mx-auto px-4 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">

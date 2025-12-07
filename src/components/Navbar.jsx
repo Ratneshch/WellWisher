@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import React from "react";
+import { ChevronDown, ChevronUp } from "lucide-react"; // ICONS
 
 // Import your full cars JSON file
 import carsJson from "../../src/data/tatacars.json";
@@ -14,7 +15,7 @@ const Navbar = () => {
     { name: "Contact Us", path: "/contactus" },
   ];
 
-  //  Automatically extract id + slug + name from real JSON
+  // Auto extract id + slug + name
   const carsData = carsJson.map((car) => ({
     id: car.id,
     slug: car.slug,
@@ -57,7 +58,7 @@ const Navbar = () => {
   return (
     <>
       <nav
-        className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 transition-all duration-500 ${
+        className={`fixed right-0 inset bg-transparent top-0 mb-5 w-full flex z-50 items-center justify-between px-4 md:px-16 transition-all duration-0 ${
           isScrolled
             ? "bg-white text-black"
             : "bg-linear-to-b from-black/70 via-black/30 text-white"
@@ -78,9 +79,14 @@ const Navbar = () => {
                 onMouseEnter={openDropdown}
                 onMouseLeave={() => delayedCloseDropdown(120)}
               >
-                <Link href={link.path} className="transition-all duration-300">
-                  {link.name}
-                </Link>
+                <div className="flex items-center gap-1 cursor-pointer transition-all duration-300">
+                  <Link href={link.path}>{link.name}</Link>
+                  {showDropdown ? (
+                    <ChevronUp size={18} className="mt-[2px]" />
+                  ) : (
+                    <ChevronDown size={18} className="mt-[2px]" />
+                  )}
+                </div>
 
                 {showDropdown && (
                   <div
@@ -118,8 +124,12 @@ const Navbar = () => {
             )
           )}
           <div>
-            <Link href="/contactus" className={`px-5 py-2 bg-amber-500 rounded-2xl font-semibold transition-all duration-500 ${isScrolled ? "text-black" : "text-white"}`}>
-            Book Test Drive
+            <Link
+              href="/contactus"
+              className={`px-5 py-2 bg-amber-500 rounded-2xl font-semibold transition-colors duration-0 ${isScrolled ? "text-black" : "text-white"
+                }`}
+            >
+              Book Test Drive
             </Link>
           </div>
         </div>
@@ -135,18 +145,13 @@ const Navbar = () => {
         {/* MOBILE MENU */}
         {isMenuOpen && (
           <div className="absolute top-full left-0 w-full bg-white text-black shadow-md py-4 flex flex-col gap-4 font-medium md:hidden">
-            <Link
-              href="/"
-              className="px-6"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/" className="px-6" onClick={() => setIsMenuOpen(false)}>
               Home
             </Link>
 
             {/* Mobile Cars Dropdown */}
             <div className="px-6">
               <div className="w-full flex justify-between items-center">
-                {/* Cars text → navigate like desktop */}
                 <Link
                   href="/newcars"
                   className="text-left"
@@ -157,10 +162,8 @@ const Navbar = () => {
                 >
                   Cars
                 </Link>
-
-                {/* Arrow → toggle dropdown only */}
                 <button onClick={() => setMobileDropdown(!mobileDropdown)}>
-                  {mobileDropdown ? "▲" : "▼"}
+                  {mobileDropdown ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
                 </button>
               </div>
 
@@ -183,25 +186,17 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link
-              href="/aboutus"
-              className="px-6"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/aboutus" className="px-6" onClick={() => setIsMenuOpen(false)}>
               About Us
             </Link>
-            <Link
-              href="/contactus"
-              className="px-6"
-              onClick={() => setIsMenuOpen(false)}
-            >
+            <Link href="/contactus" className="px-6" onClick={() => setIsMenuOpen(false)}>
               Contact Us
             </Link>
           </div>
         )}
       </nav>
 
-      {/* Overlay to close mobile menu when clicking anywhere on the screen */}
+      {/* Overlay */}
       {isMenuOpen && (
         <div
           className="fixed inset-0 md:hidden z-40"
