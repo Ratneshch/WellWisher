@@ -242,7 +242,7 @@ export default function ContactForm() {
                   type="submit"
                   className="group relative w-full py-4 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white font-bold rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 uppercase tracking-widest text-sm"
                 >
-                  <span className="relative z-10">Send Message</span>
+                  <span className="relative z-10">Submit</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-700 via-indigo-700 to-blue-800 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 </button>
 
