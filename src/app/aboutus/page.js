@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+
 export default function AboutUsPage() {
   // simple carousel state
   const showroomImages = [
@@ -22,20 +23,26 @@ export default function AboutUsPage() {
   return (
     <main className="bg-white text-gray-800 ">
       <div className="relative h-[350px] w-full mb-5 rounded-9xl">
-          <img src="https://www.durawell.co.in/assets/products/product-banner/about-us.jpg" className="w-full object-cover h-full"></img>
-          <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/70" />
-          {/* <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
-            <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">About Us</h1> 
-            <p className="text-xl w-1/3 text-center md:text-2xl font-medium mt- drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] text-white">
-              Make world-class mobility accessible to everyone.
-            </p>
-          </div> */}
+        <img
+          src="https://www.durawell.co.in/assets/products/product-banner/about-us.jpg"
+          className="w-full object-cover h-full"
+          alt="About Us Banner"
+        />
+        <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/70" />
+        <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
+          <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">
+            About Us
+          </h1>
+          <p className="text-xl w-1/3 text-center md:text-2xl font-medium mt-4 drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] text-white">
+            Make world-class mobility accessible to everyone.
+          </p>
         </div>
+      </div>
+
       {/* HERO: video + intro */}
       <section className="max-w-6xl mx-auto px-4 py-12 lg:py-16 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
         <div className="lg:col-span-2">
           <div className="w-full aspect-video rounded-md overflow-hidden shadow">
-            {/* Use YouTube embed URL (not watch?v=) */}
             <iframe
               className="w-full h-full border-0"
               src="https://www.youtube.com/embed/vUKmCcbQFWg"
@@ -47,7 +54,9 @@ export default function AboutUsPage() {
         </div>
 
         <div className="text-sm text-gray-700 space-y-4">
-          <h1 className="text-2xl font-bold  text-yellow-600">About WellWisher Group</h1>
+          <h1 className="text-2xl font-bold  text-yellow-600">
+            About WellWisher Group
+          </h1>
           <p>
             WellWisher Group has proudly stood tall as a leader in Mumbai, Navi
             Mumbai, and Pune’s real estate development sector for over 15 years.
@@ -69,73 +78,72 @@ export default function AboutUsPage() {
       </section>
 
       {/* LEADERSHIP */}
-   <section className="bg-black py-16">
-  <div className="max-w-6xl mx-auto px-4">
-    <h2 className="text-4xl md:text-5xl font-extrabold text-center text-yellow-500 tracking-wider mb-14">
-      LEADERSHIP
-    </h2>
+      <section className="bg-black py-16">
+        <div className="max-w-6xl mx-auto px-4">
+          <h2 className="text-4xl md:text-5xl font-extrabold text-center text-yellow-500 tracking-wider mb-14">
+            LEADERSHIP
+          </h2>
 
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
-      {/* Left Card – Photo */}
-      <div className="bg-white border border-white/10 shadow-2xl p-6 rounded-2xl">
-        <div className="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
-          <Image
-            src="/Abhijeet_Bansal.png"
-            alt="Abhijeet C Bhansali"
-            fill
-            className="object-cover"
-          />
-        </div>
-      </div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-start">
+            {/* Left Card – Photo */}
+            <div className="bg-white border border-white/10 shadow-2xl p-6 rounded-2xl">
+              <div className="w-full relative aspect-[4/5] rounded-xl overflow-hidden shadow-lg">
+                <Image
+                  src="/Abhijeet_Bansal.png"
+                  alt="Abhijeet C Bhansali"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
 
-      {/* Right Card – Bio */}
-      <div className="lg:col-span-2 bg-[#111] border border-white/10 shadow-2xl p-8 rounded-2xl text-white space-y-5">
-        <div>
-          <h3 className="text-3xl font-bold text-white">
-            Abhijeet C Bhansali
-          </h3>
-          <p className="text-sm text-gray-400 mt-1">
-            Managing Director, WellWisher Group
-          </p>
-        </div>
+            {/* Right Card – Bio */}
+            <div className="lg:col-span-2 bg-[#111] border border-white/10 shadow-2xl p-8 rounded-2xl text-white space-y-5">
+              <div>
+                <h3 className="text-3xl font-bold text-white">
+                  Abhijeet C Bhansali
+                </h3>
+                <p className="text-sm text-gray-400 mt-1">
+                  Managing Director, WellWisher Group
+                </p>
+              </div>
 
-        <div className="text-gray-300 text-[15px] leading-relaxed space-y-4">
-          <p>
-            We at WellWisher Group believe that great leaders empower others.
-            Every project undertaken by the group is strongly backed by
-            outstanding leadership, providing invaluable insight and vision
-            that drives the company forward toward greater heights.
-          </p>
-          <p>
-            Abhijeet Chandrakant Bhansali, MD of WellWisher Group, strives to
-            build a better tomorrow by enhancing lifestyle standards and
-            delivering unmatched quality. With customers at the heart of every
-            endeavor, each project is conceptualized keeping in mind the
-            aspirations, comfort, and satisfaction of the buyer.
-          </p>
-        </div>
+              <div className="text-gray-300 text-[15px] leading-relaxed space-y-4">
+                <p>
+                  We at WellWisher Group believe that great leaders empower others.
+                  Every project undertaken by the group is strongly backed by
+                  outstanding leadership, providing invaluable insight and vision
+                  that drives the company forward toward greater heights.
+                </p>
+                <p>
+                  Abhijeet Chandrakant Bhansali, MD of WellWisher Group, strives to
+                  build a better tomorrow by enhancing lifestyle standards and
+                  delivering unmatched quality. With customers at the heart of every
+                  endeavor, each project is conceptualized keeping in mind the
+                  aspirations, comfort, and satisfaction of the buyer.
+                </p>
+              </div>
 
-        {/* Signature */}
-        <div className="pt-4">
-          <div className="w-48 h-20 relative opacity-90">
-            <Image
-              src="/signature.jpg"
-              alt="signature"
-              fill
-              className="object-contain"
-            />
+              {/* Signature */}
+              <div className="pt-4">
+                <div className="w-48 h-20 relative opacity-90">
+                  <Image
+                    src="/signature.jpg"
+                    alt="signature"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
+      </section>
 
       {/* SHOWROOM */}
       <section className="py-12">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-center  text-yellow-600 tracking-wide mb-8">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-center text-yellow-600 tracking-wide mb-8">
             SHOWROOM
           </h2>
 
@@ -165,7 +173,9 @@ export default function AboutUsPage() {
 
             {/* prev / next */}
             <button
-              onClick={() => setIndex((index - 1 + showroomImages.length) % showroomImages.length)}
+              onClick={() =>
+                setIndex((index - 1 + showroomImages.length) % showroomImages.length)
+              }
               className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60"
               aria-label="previous"
             >
