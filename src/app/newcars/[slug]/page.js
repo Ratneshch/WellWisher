@@ -230,10 +230,7 @@ function SpecItem({ label, value }) {
 
 function Badge({ children }) {
   return (
-    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full
-                     bg-white border border-black text-slate-900
-                     text-[11px] md:text-[12px] font-medium
-                     shadow-[0_8px_18px_rgba(15,23,42,0.18)]">
+    <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white border border-black text-slate-900 text-[11px] md:text-[12px] font-medium shadow-[0_8px_18px_rgba(15,23,42,0.18)]">
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
       {children}
     </span>
