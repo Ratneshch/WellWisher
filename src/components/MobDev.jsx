@@ -4,7 +4,7 @@ import React from 'react';
 
 const MobDev = () => {
     const handleCallNow = () => {
-    window.open('tel:+918452097707', '_blank');
+    window.open('tel:+918655627870', '_blank');
   };
   return (
     <>
