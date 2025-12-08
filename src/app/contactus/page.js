@@ -7,6 +7,7 @@ export default function ContactForm() {
     name: "",
     email: "",
     phone: "",
+    car: "",
     message: "",
   });
 
@@ -69,7 +70,7 @@ export default function ContactForm() {
     console.log("Form submitted:", form);
 
     setTimeout(() => {
-      setForm({ name: "", email: "", phone: "", message: "" });
+      setForm({ name: "", email: "", phone: "", message: "", car: "", });
       setSuccess("");
     }, 3000);
   };
@@ -164,6 +165,29 @@ export default function ContactForm() {
                     placeholder="Enter your mobile number..."
                     className="w-full px-5 py-3.5 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] transition-all duration-300 text-gray-800 placeholder:text-gray-400"
                   />
+                </div>
+
+                <div className="group">
+                  <label className="block  text-xs font-bold text-gray-700 uppercase tracking-widest mb-2.5 transition-colors group-focus-within:text-blue-600">
+                    Select Car for Test Drive
+                  </label>
+                  <select
+                    name="car"
+                    value={form.car}
+                    onChange={handleChange}
+                    className="w-full px-5 py-3.5 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] transition-all duration-300 text-gray-400"
+                  >
+                    <option value="">Choose a car...</option>
+                    <option value="Tiago">Tata Tiago</option>
+                    <option value="Tigor">Tata Tigor</option>
+                    <option value="Altroz">Tata Altroz</option>
+                    <option value="Punch">Tata Punch</option>
+                    <option value="Nexon">Tata Nexon</option>
+                    <option value="Harrier">Tata Harrier</option>
+                    <option value="Safari">Tata Safari</option>
+                    <option value="Sierra">Tata Sierra</option>
+                    <option value="Curvv">Tata Curvv</option>
+                  </select>
                 </div>
 
                 {/* Message */}
