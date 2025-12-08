@@ -102,7 +102,7 @@ export default function ContactForm() {
 
       {/* CAROUSEL + FORM SECTION */}
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-slate-100 flex items-center justify-center p-4 md:p-6 lg:p-8">
-        <div className="w-full max-w-8xl bg-white rounded-3xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] grid grid-cols-1 lg:grid-cols-2">
+        <div className="w-full max-w-8xl bg-white rounded-3xl overflow-visible sm:overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] grid grid-cols-1 lg:grid-cols-2">
 
           {/* FORM SECTION */}
           <div className="relative p-6 md:p-10 lg:p-14 flex flex-col justify-center order-1 lg:order-2 bg-gradient-to-br from-white to-gray-50">
