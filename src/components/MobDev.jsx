@@ -3,6 +3,9 @@ import Link from 'next/link';
 import React from 'react';
 
 const MobDev = () => {
+    const handleCallNow = () => {
+    window.open('tel:+918452097707', '_blank');
+  };
   return (
     <>
       {/* Mobile-only bottom fixed buttons */}
@@ -16,6 +19,7 @@ const MobDev = () => {
           </Link>
           <Link 
             href="/contactus"
+            onClick={handleCallNow}
             className="flex-1 bg-green-500 text-white py-3 px-4 rounded-full font-semibold text-sm shadow-md hover:shadow-xl transition-all duration-200 flex items-center justify-center"
           >
             Call Now
