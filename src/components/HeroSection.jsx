@@ -40,8 +40,7 @@ const HeroSection = () => {
       <img
         src={currentCar.image}
         alt="car"
-        className="absolute top-0 left-0 w-full h-full object-cover"
-      />
+        className="absolute top-0 left-0 w-full h-full object-cover"/>
 
       {/* Overlay */}
       <div className="absolute inset-0 bg-linear-to-b from-black/80 via-black/50 to-black/20" />
@@ -50,9 +49,7 @@ const HeroSection = () => {
       <div className="relative h-full flex items-center px-4 md:px-25">
         <div className="text-white space-y-2 md:space-y-4 text-center sm:text-left w-full sm:w-auto">
           <h1
-            className="inline-block text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-wide leading-tight
-              py-1  md:py-3 rounded-lg  md:rounded-xl"
-          >
+            className="inline-block text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-wide leading-tight py-1  md:py-3 rounded-lg  md:rounded-xl">
             {currentCar.name.split(" ")[0]}{" "}
             <span style={{ color: currentCar.color }}>
               {currentCar.name.split(" ")[1]}
