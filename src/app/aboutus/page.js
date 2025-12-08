@@ -29,14 +29,14 @@ export default function AboutUsPage() {
           alt="About Us Banner"
         />
         <div className="absolute inset-0 bg-linear-to-b from-black/10 via-transparent to-black/70" />
-        <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
+        {/* <div className="absolute inset-0 items-center justify-center mt-5 flex flex-col">
           <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)]">
             About Us
           </h1>
           <p className="text-xl w-1/3 text-center md:text-2xl font-medium mt-4 drop-shadow-[0_4px_6px_rgba(0,0,0,0.6)] text-white">
             Make world-class mobility accessible to everyone.
           </p>
-        </div>
+        </div> */}
       </div>
 
       {/* HERO: video + intro */}
