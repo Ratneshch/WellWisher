@@ -59,21 +59,43 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // ✅ UPDATED: send data to your Express + MySQL backend
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.name || !form.email || !form.phone) {
       setSuccess("Please fill all required fields.");
+      setTimeout(() => setSuccess(""), 3000);
       return;
     }
 
-    setSuccess("Thank you! Your message has been sent.");
-    console.log("Form submitted:", form);
+    try {
+      const res = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
-    setTimeout(() => {
-      setForm({ name: "", email: "", phone: "", message: "", car: "", });
-      setSuccess("");
-    }, 3000);
+      if (!res.ok) {
+        throw new Error("Failed to submit form");
+      }
+
+      setSuccess("Thank you! Your message has been sent.");
+
+      // reset form after success
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        car: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Form submit error:", error);
+      setSuccess("Something went wrong. Please try again.");
+    } finally {
+      setTimeout(() => setSuccess(""), 3000);
+    }
   };
 
   const goToSlide = (index) => {
@@ -178,7 +200,7 @@ export default function ContactForm() {
                       name="car"
                       value={form.car}
                       onChange={handleChange}
-                      className="w-full px-3 py-3 sm:px-5 sm:py-3.5 bg-white border-2 border-gray-200 rounded-xl appearance-none focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] transition-all text-gray-400 text-sm sm:text-base"
+                      className="w-full px-3 py-3 sm:px-5 sm:py-3.5 bg-white border-2 border-gray-200 rounded-xl appearance-none focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] transition-all text-gray-900 text-sm sm:text-base"
                     >
                       <option value="">Choose a car...</option>
                       <option value="Tiago">Tata Tiago</option>
@@ -258,10 +280,14 @@ export default function ContactForm() {
             
             {/* Animated Grid Pattern */}
             <div className="absolute inset-0 opacity-5">
-              <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-                backgroundSize: '50px 50px'
-              }}></div>
+              <div
+                className="absolute inset-0"
+                style={{
+                  backgroundImage:
+                    "linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)",
+                  backgroundSize: "50px 50px",
+                }}
+              ></div>
             </div>
 
             {/* Spotlight Effect */}
@@ -341,67 +367,67 @@ export default function ContactForm() {
 
           {/* Location Cards */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 mt-10">
-  {/* Card 1 */}
-  <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-    <div className="w-full h-64">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d50952.50559007355!2d73.002401!3d19.1757927!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bf2c81669df9%3A0x5cae5dca90626a08!2sTata%20Motors%20Cars%20Showroom%20-%20Well%20Wisher%20Cars%2C%20Airoli!5e1!3m2!1sen!2sin!4v1765105721552!5m2!1sen!2sin"
-        className="w-full h-full"
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-    <div className="p-5 space-y-3">
-      <h3 className="text-lg font-bold">Tata Motors Cars Showroom - Well Wisher Cars, Airoli</h3>
-      <p className="text-sm text-gray-600 leading-relaxed">
-        Plot No KX14, Krishna Business Park, Railway Station, Airoli Rd,
-        opposite Dighe, Ramu Limaje Nagar, Dighe,
-        Navi Mumbai, Maharashtra 400708
-      </p>
-    </div>
-  </div>
+            {/* Card 1 */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+              <div className="w-full h-64">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d50952.50559007355!2d73.002401!3d19.1757927!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7bf2c81669df9%3A0x5cae5dca90626a08!2sTata%20Motors%20Cars%20Showroom%20-%20Well%20Wisher%20Cars%2C%20Airoli!5e1!3m2!1sen!2sin!4v1765105721552!5m2!1sen!2sin"
+                  className="w-full h-full"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <div className="p-5 space-y-3">
+                <h3 className="text-lg font-bold">Tata Motors Cars Showroom - Well Wisher Cars, Airoli</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Plot No KX14, Krishna Business Park, Railway Station, Airoli Rd,
+                  opposite Dighe, Ramu Limaje Nagar, Dighe,
+                  Navi Mumbai, Maharashtra 400708
+                </p>
+              </div>
+            </div>
 
-  {/* Card 2 */}
-  <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-    <div className="w-full h-64">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.928884894783!2d73.02235759999999!3d19.103371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c12496e1c6c3%3A0xedd672c6ddf3745d!2sTata%20Motors%20Cars%20Service%20Centre%20-%20Wellwisher%20Cars%20Private%20Limited%2C%20Mahape!5e1!3m2!1sen!2sin!4v1765105917785!5m2!1sen!2sin"
-        className="w-full h-full"
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-    <div className="p-5 space-y-3">
-      <h3 className="text-lg font-bold">Tata Motors Cars Service Centre - Wellwisher Cars Private Limited, Mahape</h3>
-      <p className="text-sm text-gray-600 leading-relaxed">
-        Gen 71/2, TTC Industrial Area, MIDC Industrial Area, Mahape,
-        Mumbai, Navi Mumbai, Maharashtra 400710
-      </p>
-    </div>
-  </div>
+            {/* Card 2 */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+              <div className="w-full h-64">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3185.928884894783!2d73.02235759999999!3d19.103371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c12496e1c6c3%3A0xedd672c6ddf3745d!2sTata%20Motors%20Cars%20Service%20Centre%20-%20Wellwisher%20Cars%20Private%20Limited%2C%20Mahape!5e1!3m2!1sen!2sin!4v1765105917785!5m2!1sen!2sin"
+                  className="w-full h-full"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <div className="p-5 space-y-3">
+                <h3 className="text-lg font-bold">Tata Motors Cars Service Centre - Wellwisher Cars Private Limited, Mahape</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Gen 71/2, TTC Industrial Area, MIDC Industrial Area, Mahape,
+                  Mumbai, Navi Mumbai, Maharashtra 400710
+                </p>
+              </div>
+            </div>
 
-  {/* Card 3 */}
-  <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
-    <div className="w-full h-64">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1594.2218090430365!2d73.1298228!3d18.9723613!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e9a33c427ef7%3A0x1542a8fe69954418!2sTata%20Motors%20Cars%20Service%20Centre%20-%20Wellwisher%20Cars%20Private%20Limited%2C%20Panvel!5e1!3m2!1sen!2sin!4v1765105977235!5m2!1sen!2sin"
-        className="w-full h-full"
-        allowFullScreen=""
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
-    <div className="p-5 space-y-3">
-      <h3 className="text-lg font-bold">Tata Motors Cars Service Centre - Wellwisher Cars Private Limited, Panvel</h3>
-      <p className="text-sm text-gray-600 leading-relaxed">
-        Gat No 119/B/1 & 119/B/2 Rees, Kolkhe, Panvel Nera,
-        Palaspe Phata, Panvel, Maharashtra 410221
-      </p>
-    </div>
-  </div>
-</div>
+            {/* Card 3 */}
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-200">
+              <div className="w-full h-64">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1594.2218090430365!2d73.1298228!3d18.9723613!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7e9a33c427ef7%3A0x1542a8fe69954418!2sTata%20Motors%20Cars%20Service%20Centre%20-%20Wellwisher%20Cars%20Private%20Limited%2C%20Panvel!5e1!3m2!1sen!2sin!4v1765105977235!5m2!1sen!2sin"
+                  className="w-full h-full"
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+              <div className="p-5 space-y-3">
+                <h3 className="text-lg font-bold">Tata Motors Cars Service Centre - Wellwisher Cars Private Limited, Panvel</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Gat No 119/B/1 & 119/B/2 Rees, Kolkhe, Panvel Nera,
+                  Palaspe Phata, Panvel, Maharashtra 410221
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
