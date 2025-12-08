@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { ChevronDown } from "lucide-react"; 
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -167,28 +168,37 @@ export default function ContactForm() {
                   />
                 </div>
 
-                <div className="group">
-                  <label className="block  text-xs font-bold text-gray-700 uppercase tracking-widest mb-2.5 transition-colors group-focus-within:text-blue-600">
+                <div className="group w-full">
+                  <label className="block text-[10px] sm:text-xs font-bold text-gray-700 uppercase tracking-widest mb-2.5 transition-colors group-focus-within:text-blue-600">
                     Select Car for Test Drive
                   </label>
-                  <select
-                    name="car"
-                    value={form.car}
-                    onChange={handleChange}
-                    className="w-full px-5 py-3.5 bg-white border-2 border-gray-200 rounded-2xl focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] transition-all duration-300 text-gray-400"
-                  >
-                    <option value="">Choose a car...</option>
-                    <option value="Tiago">Tata Tiago</option>
-                    <option value="Tigor">Tata Tigor</option>
-                    <option value="Altroz">Tata Altroz</option>
-                    <option value="Punch">Tata Punch</option>
-                    <option value="Nexon">Tata Nexon</option>
-                    <option value="Harrier">Tata Harrier</option>
-                    <option value="Safari">Tata Safari</option>
-                    <option value="Sierra">Tata Sierra</option>
-                    <option value="Curvv">Tata Curvv</option>
-                  </select>
+
+                  <div className="relative">
+                    <select
+                      name="car"
+                      value={form.car}
+                      onChange={handleChange}
+                      className="w-full px-3 py-3 sm:px-5 sm:py-3.5 bg-white border-2 border-gray-200 rounded-xl appearance-none focus:outline-none focus:border-blue-500 focus:shadow-[0_0_0_4px_rgba(59,130,246,0.1)] transition-all text-gray-400 text-sm sm:text-base"
+                    >
+                      <option value="">Choose a car...</option>
+                      <option value="Tiago">Tata Tiago</option>
+                      <option value="Tigor">Tata Tigor</option>
+                      <option value="Altroz">Tata Altroz</option>
+                      <option value="Punch">Tata Punch</option>
+                      <option value="Nexon">Tata Nexon</option>
+                      <option value="Harrier">Tata Harrier</option>
+                      <option value="Safari">Tata Safari</option>
+                      <option value="Sierra">Tata Sierra</option>
+                      <option value="Curvv">Tata Curvv</option>
+                    </select>
+
+                    {/* Custom arrow */}
+                    <span className="pointer-events-none absolute right-4 cursor-pointer top-[50%] -translate-y-1/2 text-gray-500 sm:right-6">
+                      <ChevronDown size={18} className="mt-[2px]" />
+                    </span>
+                  </div>
                 </div>
+
 
                 {/* Message */}
                 <div className="group">
