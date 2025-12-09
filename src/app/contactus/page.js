@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { ChevronDown } from "lucide-react"; 
+import { ChevronDown } from "lucide-react";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -20,31 +20,31 @@ export default function ContactForm() {
       image: "/sierra2.png",
       title: "TATA SIERRA",
       description: "The Legend Returns",
-      gradient: "from-slate-900 via-blue-900 to-indigo-900"
+      gradient: "from-slate-900 via-blue-900 to-indigo-900",
     },
     {
       image: "/safari.png",
       title: "TATA SAFARI",
       description: "Reclaim Your World.",
-      gradient: "from-gray-900 via-slate-800 to-gray-900"
+      gradient: "from-gray-900 via-slate-800 to-gray-900",
     },
     {
       image: "/harrier.png",
       title: "TATA HARRIER",
       description: "Comfort meets Power.",
-      gradient: "from-zinc-900 via-neutral-800 to-stone-900"
+      gradient: "from-zinc-900 via-neutral-800 to-stone-900",
     },
     {
       image: "/altrozCard.png",
       title: "TATA ALTROZ",
       description: "Born to Perform.",
-      gradient: "from-gray-900 via-blue-900 to-slate-900"
+      gradient: "from-gray-900 via-blue-900 to-slate-900",
     },
     {
       image: "/Nexon.png",
       title: "TATA NEXON",
       description: "Urban SUV. Boldly Safe.",
-      gradient: "from-neutral-900 via-gray-800 to-zinc-900"
+      gradient: "from-neutral-900 via-gray-800 to-zinc-900",
     },
   ];
 
@@ -59,7 +59,7 @@ export default function ContactForm() {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // ✅ UPDATED: send data to your Express + MySQL backend
+  // 🌐 Send data to backend
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -76,8 +76,14 @@ export default function ContactForm() {
         body: JSON.stringify(form),
       });
 
+      // 🔹 Read backend error message if status is not OK
       if (!res.ok) {
-        throw new Error("Failed to submit form");
+        let errorMsg = "Failed to submit form";
+        try {
+          const data = await res.json();
+          if (data?.message) errorMsg = data.message;
+        } catch (e) {}
+        throw new Error(errorMsg);
       }
 
       setSuccess("Thank you! Your message has been sent.");
@@ -92,7 +98,7 @@ export default function ContactForm() {
       });
     } catch (error) {
       console.error("Form submit error:", error);
-      setSuccess("Something went wrong. Please try again.");
+      setSuccess(error.message || "Something went wrong. Please try again.");
     } finally {
       setTimeout(() => setSuccess(""), 3000);
     }
@@ -125,10 +131,8 @@ export default function ContactForm() {
       {/* CAROUSEL + FORM SECTION */}
       <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-slate-100 flex items-center justify-center p-4 md:p-6 lg:p-8">
         <div className="w-full max-w-8xl bg-white rounded-3xl overflow-visible sm:overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.15)] grid grid-cols-1 lg:grid-cols-2">
-
           {/* FORM SECTION */}
           <div className="relative p-6 md:p-10 lg:p-14 flex flex-col justify-center order-1 lg:order-2 bg-gradient-to-br from-white to-gray-50">
-            
             {/* Animated Background Circles */}
             <div className="absolute top-10 right-10 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl animate-pulseSlow"></div>
             <div className="absolute bottom-10 left-10 w-64 h-64 bg-indigo-500/5 rounded-full blur-3xl animate-pulseSlower"></div>
@@ -139,7 +143,10 @@ export default function ContactForm() {
                   Contact Us
                 </h1>
                 <p className="text-base md:text-lg text-gray-600 leading-relaxed">
-                  We appreciate your interest in <span className="font-semibold text-blue-900">WELLWISHER CARS.</span>
+                  We appreciate your interest in{" "}
+                  <span className="font-semibold text-blue-900">
+                    WELLWISHER CARS.
+                  </span>
                 </p>
               </div>
 
@@ -221,11 +228,13 @@ export default function ContactForm() {
                   </div>
                 </div>
 
-
                 {/* Message */}
                 <div className="group">
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-widest mb-2.5 transition-colors group-focus-within:text-blue-600">
-                    Message <span className="text-gray-400 normal-case">(Optional)</span>
+                    Message{" "}
+                    <span className="text-gray-400 normal-case">
+                      (Optional)
+                    </span>
                   </label>
                   <textarea
                     name="message"
@@ -263,7 +272,6 @@ export default function ContactForm() {
 
           {/* CAROUSEL SECTION */}
           <div className="relative overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[700px] order-2 lg:order-1">
-            
             {/* Dynamic Gradient Backgrounds */}
             {carouselData.map((item, i) => (
               <div
@@ -277,7 +285,7 @@ export default function ContactForm() {
             {/* Luxury Overlay Effects */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.08)_0%,transparent_50%)]"></div>
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_80%,rgba(255,255,255,0.05)_0%,transparent_50%)]"></div>
-            
+
             {/* Animated Grid Pattern */}
             <div className="absolute inset-0 opacity-5">
               <div
@@ -299,8 +307,8 @@ export default function ContactForm() {
                 <div
                   key={i}
                   className={`absolute inset-0 flex items-center justify-center transition-all duration-1000 ${
-                    i === currentSlide 
-                      ? "opacity-100 scale-100" 
+                    i === currentSlide
+                      ? "opacity-100 scale-100"
                       : "opacity-0 scale-95"
                   }`}
                 >
@@ -361,7 +369,11 @@ export default function ContactForm() {
               Visit Our Locations
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Find the nearest <span className="font-semibold text-blue-900">WELLWISHER CARS</span> showroom or service centre
+              Find the nearest{" "}
+              <span className="font-semibold text-blue-900">
+                WELLWISHER CARS
+              </span>{" "}
+              showroom or service centre
             </p>
           </div>
 
@@ -379,11 +391,13 @@ export default function ContactForm() {
                 ></iframe>
               </div>
               <div className="p-5 space-y-3">
-                <h3 className="text-lg font-bold">Tata Motors Cars Showroom - Well Wisher Cars, Airoli</h3>
+                <h3 className="text-lg font-bold">
+                  Tata Motors Cars Showroom - Well Wisher Cars, Airoli
+                </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Plot No KX14, Krishna Business Park, Railway Station, Airoli Rd,
-                  opposite Dighe, Ramu Limaje Nagar, Dighe,
-                  Navi Mumbai, Maharashtra 400708
+                  Plot No KX14, Krishna Business Park, Railway Station, Airoli
+                  Rd, opposite Dighe, Ramu Limaje Nagar, Dighe, Navi Mumbai,
+                  Maharashtra 400708
                 </p>
               </div>
             </div>
@@ -400,7 +414,10 @@ export default function ContactForm() {
                 ></iframe>
               </div>
               <div className="p-5 space-y-3">
-                <h3 className="text-lg font-bold">Tata Motors Cars Service Centre - Wellwisher Cars Private Limited, Mahape</h3>
+                <h3 className="text-lg font-bold">
+                  Tata Motors Cars Service Centre - Wellwisher Cars Private
+                  Limited, Mahape
+                </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
                   Gen 71/2, TTC Industrial Area, MIDC Industrial Area, Mahape,
                   Mumbai, Navi Mumbai, Maharashtra 400710
@@ -420,15 +437,17 @@ export default function ContactForm() {
                 ></iframe>
               </div>
               <div className="p-5 space-y-3">
-                <h3 className="text-lg font-bold">Tata Motors Cars Service Centre - Wellwisher Cars Private Limited, Panvel</h3>
+                <h3 className="text-lg font-bold">
+                  Tata Motors Cars Service Centre - Wellwisher Cars Private
+                  Limited, Panvel
+                </h3>
                 <p className="text-sm text-gray-600 leading-relaxed">
-                  Gat No 119/B/1 & 119/B/2 Rees, Kolkhe, Panvel Nera,
-                  Palaspe Phata, Panvel, Maharashtra 410221
+                  Gat No 119/B/1 & 119/B/2 Rees, Kolkhe, Panvel Nera, Palaspe
+                  Phata, Panvel, Maharashtra 410221
                 </p>
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </>
